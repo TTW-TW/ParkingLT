@@ -1,87 +1,83 @@
-/**
- * ParkingLT 核心邏輯
- * 1. 讀取本地 JSON 資料
- * 2. 整合靜態與動態資訊
- * 3. 渲染地圖點位
- */
-
 document.addEventListener("DOMContentLoaded", async () => {
-    // 初始化地圖（中心點設在宜蘭）
-    const map = L.map("map").setView([24.75, 121.76], 12);
+    // 初始化地圖，中心點設在羅東轉運站附近
+    const map = L.map("map").setView([24.677, 121.779], 14);
 
     L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
         attribution:
-            '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+            '&copy; <a href="https://tp.e-land.gov.tw/">宜蘭縣交通資訊網</a>',
     }).addTo(map);
 
     try {
-        // 同步讀取兩份 JSON 檔案
-        const [resParks, resAvails] = await Promise.all([
-            fetch("CarPark.json"),
-            fetch("ParkingCityAvailability.json"),
-        ]);
-
-        const parkData = await resParks.json();
-        const availData = await resAvails.json();
-
-        // 1. 資料正規化 (Data Normalization): 將可用車位轉為 Map 以利快速查找 (O(1))
-        const availMap = new Map();
-        availData.ParkingAvailabilities.forEach((item) => {
-            availMap.set(item.CarParkID, item);
+        // 讀取本地端 json
+        // 未來若要直接 fetch API，需注意瀏覽器 CORS 限制，建議透過後端或 Proxy 轉接
+        const response = await fetch("yl_government.json", {
+            method: "GET",
+            headers: {
+                accept: "application/json",
+            },
         });
 
+        const data = await response.json();
+
+        let totalParks = data.length;
         let liveCount = 0;
-        const allParks = parkData.CarParks;
 
-        // 2. 遍歷所有點位並標註
-        allParks.forEach((park) => {
-            const parkID = park.CarParkID;
-            const liveInfo = availMap.get(parkID); // 串接剩餘車位資訊
-            const position = [
-                park.CarParkPosition.PositionLat,
-                park.CarParkPosition.PositionLon,
-            ];
+        data.forEach((park) => {
+            // 資料對照：X 是經度(Lon)，Y 是緯度(Lat)
+            const position = [park.Y, park.X];
 
-            // 判斷是否有即時車位資料，設定不同樣式
-            const hasLive = !!liveInfo;
+            // 判斷是否有車位資訊 (AvailableCar 為 -1 代表無即時資料)
+            const hasLive = park.AvailableCar !== -1;
             if (hasLive) liveCount++;
 
-            // 組合 Popup HTML (大字體、高對比)
+            // 組合長輩友善 Popup
             let popupHtml = `
                 <div class="elder-popup">
-                    <b>${park.CarParkName.Zh_tw}</b><br>
-                    <small>${park.Address}</small><br>
+                    <b>${park.CName}</b><br>
+                    <div class="fee-info">
+                        💰 ${park.PayEX || "費率請洽現場"}
+                    </div>
+                    <small>📍 ${park.CAddress}</small>
             `;
 
             if (hasLive) {
                 popupHtml += `
                     <div class="badge has-data">
-                        剩餘車位：<span class="avail-num">${liveInfo.AvailableSpaces}</span> / ${liveInfo.TotalSpaces}
+                        剩餘車位：<span class="avail-num">${park.AvailableCar}</span> / ${park.TotalCar}
                     </div>
                 `;
             } else {
-                popupHtml += `<div class="badge no-data">暫無即時車位資訊</div>`;
+                popupHtml += `<div class="badge no-data">目前無即時資訊</div>`;
             }
+
+            if (park.chargingPoint > 0) {
+                popupHtml += `<div style="margin-top:5px; color:#1565c0; font-weight:bold;">⚡ 內含充電樁：${park.chargingPoint} 支</div>`;
+            }
+
             popupHtml += `</div>`;
 
-            // 標記點位
+            // 標記在地圖上
             const marker = L.marker(position).addTo(map);
             marker.bindPopup(popupHtml);
 
-            // 若無即時資料，可以微調透明度讓視覺更清楚
-            if (!hasLive) {
-                marker.setOpacity(0.6);
+            // 若為重點標記 (如你要的 Times新羅東轉運站)，可以直接預設開啟或改色
+            if (park.ID === 240) {
+                marker.bindTooltip("目標：新羅東轉運站", {
+                    permanent: true,
+                    direction: "top",
+                });
             }
         });
 
-        // 3. 更新統計面板
         document.getElementById("stat-content").innerHTML = `
-            <div class="stat-item">停車場總數：${allParks.length}</div>
-            <div class="stat-item">即時連線數：${liveCount}</div>
+            <div>總載入站點：${totalParks}</div>
+            <div>即時車位站點：${liveCount}</div>
+            <hr>
+            <small>更新時間參考：<br>${data[0].Updatetime || "N/A"}</small>
         `;
     } catch (error) {
-        console.error("資料讀取失敗:", error);
-        document.getElementById("stat-content").innerHTML =
-            '<span style="color:red">資料讀取錯誤，請檢查 JSON 檔案或 Server 狀態</span>';
+        console.error("讀取失敗:", error);
+        document.getElementById("stat-content").innerText =
+            "檔案讀取失敗，請確認 yl_government.json 是否在同目錄。";
     }
 });
