@@ -1,0 +1,1570 @@
+{
+  "UpdateTime": "2026-05-03T21:53:01+08:00",
+  "UpdateInterval": -1,
+  "SrcUpdateTime": "2026-05-03T21:51:17+08:00",
+  "SrcUpdateInterval": 60,
+  "AuthorityCode": "ILA",
+  "Count": 65,
+  "ParkingAvailabilities": [
+    {
+      "CarParkID": "108",
+      "CarParkName": {
+        "Zh_tw": "台灣聯通宜蘭傳藝停車場"
+      },
+      "TotalSpaces": 697,
+      "AvailableSpaces": 690,
+      "Availabilities": [
+        {
+          "SpaceType": 1,
+          "NumberOfSpaces": 697,
+          "AvailableSpaces": 690
+        },
+        {
+          "SpaceType": 11,
+          "NumberOfSpaces": 0,
+          "AvailableSpaces": 0
+        }
+      ],
+      "ServiceStatus": 1,
+      "FullStatus": 0,
+      "ChargeStatus": 1,
+      "DataCollectTime": "2026-05-03T21:51:17+08:00"
+    },
+    {
+      "CarParkID": "112",
+      "CarParkName": {
+        "Zh_tw": "壯圍共乘停車場"
+      },
+      "TotalSpaces": 134,
+      "AvailableSpaces": 109,
+      "Availabilities": [
+        {
+          "SpaceType": 1,
+          "NumberOfSpaces": 134,
+          "AvailableSpaces": 109
+        },
+        {
+          "SpaceType": 11,
+          "NumberOfSpaces": 1,
+          "AvailableSpaces": 1
+        }
+      ],
+      "ServiceStatus": 1,
+      "FullStatus": 0,
+      "ChargeStatus": 1,
+      "DataCollectTime": "2026-05-03T21:51:17+08:00"
+    },
+    {
+      "CarParkID": "113",
+      "CarParkName": {
+        "Zh_tw": "五結共乘停車場"
+      },
+      "TotalSpaces": 113,
+      "AvailableSpaces": 97,
+      "Availabilities": [
+        {
+          "SpaceType": 1,
+          "NumberOfSpaces": 113,
+          "AvailableSpaces": 97
+        },
+        {
+          "SpaceType": 11,
+          "NumberOfSpaces": 1,
+          "AvailableSpaces": 1
+        }
+      ],
+      "ServiceStatus": 1,
+      "FullStatus": 0,
+      "ChargeStatus": 1,
+      "DataCollectTime": "2026-05-03T21:51:17+08:00"
+    },
+    {
+      "CarParkID": "116",
+      "CarParkName": {
+        "Zh_tw": "TIMES宜蘭神農路停車場"
+      },
+      "TotalSpaces": 100,
+      "AvailableSpaces": 50,
+      "Availabilities": [
+        {
+          "SpaceType": 1,
+          "NumberOfSpaces": 100,
+          "AvailableSpaces": 50
+        },
+        {
+          "SpaceType": 11,
+          "NumberOfSpaces": 0,
+          "AvailableSpaces": 0
+        }
+      ],
+      "ServiceStatus": 1,
+      "FullStatus": 0,
+      "ChargeStatus": 1,
+      "DataCollectTime": "2026-05-03T21:51:17+08:00"
+    },
+    {
+      "CarParkID": "120",
+      "CarParkName": {
+        "Zh_tw": "環華豐（股）公司新月廣場停車場"
+      },
+      "TotalSpaces": 982,
+      "AvailableSpaces": 626,
+      "Availabilities": [
+        {
+          "SpaceType": 1,
+          "NumberOfSpaces": 982,
+          "AvailableSpaces": 626
+        },
+        {
+          "SpaceType": 11,
+          "NumberOfSpaces": 10,
+          "AvailableSpaces": 9
+        }
+      ],
+      "ServiceStatus": 1,
+      "FullStatus": 0,
+      "ChargeStatus": 1,
+      "DataCollectTime": "2026-05-03T21:51:17+08:00"
+    },
+    {
+      "CarParkID": "122",
+      "CarParkName": {
+        "Zh_tw": "中天大飯店停車場"
+      },
+      "TotalSpaces": 99,
+      "AvailableSpaces": 68,
+      "Availabilities": [
+        {
+          "SpaceType": 1,
+          "NumberOfSpaces": 99,
+          "AvailableSpaces": 68
+        },
+        {
+          "SpaceType": 11,
+          "NumberOfSpaces": 0,
+          "AvailableSpaces": 0
+        }
+      ],
+      "ServiceStatus": 1,
+      "FullStatus": 0,
+      "ChargeStatus": 1,
+      "DataCollectTime": "2026-05-03T21:51:17+08:00"
+    },
+    {
+      "CarParkID": "128",
+      "CarParkName": {
+        "Zh_tw": "話水大樓停車場"
+      },
+      "TotalSpaces": 182,
+      "AvailableSpaces": 43,
+      "Availabilities": [
+        {
+          "SpaceType": 1,
+          "NumberOfSpaces": 182,
+          "AvailableSpaces": 43
+        },
+        {
+          "SpaceType": 11,
+          "NumberOfSpaces": 0,
+          "AvailableSpaces": 0
+        }
+      ],
+      "ServiceStatus": 1,
+      "FullStatus": 0,
+      "ChargeStatus": 1,
+      "DataCollectTime": "2026-05-03T21:51:17+08:00"
+    },
+    {
+      "CarParkID": "144",
+      "CarParkName": {
+        "Zh_tw": "頭城港口停車場"
+      },
+      "TotalSpaces": 71,
+      "AvailableSpaces": 70,
+      "Availabilities": [
+        {
+          "SpaceType": 1,
+          "NumberOfSpaces": 71,
+          "AvailableSpaces": 70
+        },
+        {
+          "SpaceType": 11,
+          "NumberOfSpaces": 0,
+          "AvailableSpaces": 0
+        }
+      ],
+      "ServiceStatus": 1,
+      "FullStatus": 0,
+      "ChargeStatus": 1,
+      "DataCollectTime": "2026-05-03T21:51:17+08:00"
+    },
+    {
+      "CarParkID": "146",
+      "CarParkName": {
+        "Zh_tw": "羅東國中停車場"
+      },
+      "TotalSpaces": 78,
+      "AvailableSpaces": 78,
+      "Availabilities": [
+        {
+          "SpaceType": 1,
+          "NumberOfSpaces": 78,
+          "AvailableSpaces": 78
+        },
+        {
+          "SpaceType": 11,
+          "NumberOfSpaces": 1,
+          "AvailableSpaces": 0
+        }
+      ],
+      "ServiceStatus": 1,
+      "FullStatus": 0,
+      "ChargeStatus": 1,
+      "DataCollectTime": "2026-05-03T21:51:17+08:00"
+    },
+    {
+      "CarParkID": "148",
+      "CarParkName": {
+        "Zh_tw": "北關海潮公園停車場"
+      },
+      "TotalSpaces": 500,
+      "AvailableSpaces": 86,
+      "Availabilities": [
+        {
+          "SpaceType": 1,
+          "NumberOfSpaces": 500,
+          "AvailableSpaces": 86
+        },
+        {
+          "SpaceType": 11,
+          "NumberOfSpaces": 0,
+          "AvailableSpaces": 0
+        }
+      ],
+      "ServiceStatus": 1,
+      "FullStatus": 0,
+      "ChargeStatus": 1,
+      "DataCollectTime": "2026-05-03T21:51:17+08:00"
+    },
+    {
+      "CarParkID": "150",
+      "CarParkName": {
+        "Zh_tw": "南方澳漁港第一停車場"
+      },
+      "TotalSpaces": 158,
+      "AvailableSpaces": 104,
+      "Availabilities": [
+        {
+          "SpaceType": 1,
+          "NumberOfSpaces": 158,
+          "AvailableSpaces": 104
+        },
+        {
+          "SpaceType": 11,
+          "NumberOfSpaces": 0,
+          "AvailableSpaces": 0
+        }
+      ],
+      "ServiceStatus": 1,
+      "FullStatus": 0,
+      "ChargeStatus": 1,
+      "DataCollectTime": "2026-05-03T21:51:17+08:00"
+    },
+    {
+      "CarParkID": "151",
+      "CarParkName": {
+        "Zh_tw": "南方澳漁港第二停車場"
+      },
+      "TotalSpaces": 88,
+      "AvailableSpaces": 88,
+      "Availabilities": [
+        {
+          "SpaceType": 1,
+          "NumberOfSpaces": 88,
+          "AvailableSpaces": 88
+        },
+        {
+          "SpaceType": 11,
+          "NumberOfSpaces": 0,
+          "AvailableSpaces": 0
+        }
+      ],
+      "ServiceStatus": 1,
+      "FullStatus": 0,
+      "ChargeStatus": 1,
+      "DataCollectTime": "2026-05-03T21:51:17+08:00"
+    },
+    {
+      "CarParkID": "154",
+      "CarParkName": {
+        "Zh_tw": "嘟嘟房宜蘭城隍廟站停車場"
+      },
+      "TotalSpaces": 25,
+      "AvailableSpaces": 0,
+      "Availabilities": [
+        {
+          "SpaceType": 1,
+          "NumberOfSpaces": 25,
+          "AvailableSpaces": 0
+        },
+        {
+          "SpaceType": 11,
+          "NumberOfSpaces": 0,
+          "AvailableSpaces": 0
+        }
+      ],
+      "ServiceStatus": 1,
+      "FullStatus": 2,
+      "ChargeStatus": 1,
+      "DataCollectTime": "2026-05-03T21:51:17+08:00"
+    },
+    {
+      "CarParkID": "155",
+      "CarParkName": {
+        "Zh_tw": "廣停八停車場"
+      },
+      "TotalSpaces": 40,
+      "AvailableSpaces": 40,
+      "Availabilities": [
+        {
+          "SpaceType": 1,
+          "NumberOfSpaces": 40,
+          "AvailableSpaces": 40
+        },
+        {
+          "SpaceType": 11,
+          "NumberOfSpaces": 0,
+          "AvailableSpaces": 0
+        }
+      ],
+      "ServiceStatus": 1,
+      "FullStatus": 0,
+      "ChargeStatus": 1,
+      "DataCollectTime": "2026-05-03T21:51:17+08:00"
+    },
+    {
+      "CarParkID": "161",
+      "CarParkName": {
+        "Zh_tw": "宜蘭縣宜蘭市復興國民中學停車場"
+      },
+      "TotalSpaces": 43,
+      "AvailableSpaces": 20,
+      "Availabilities": [
+        {
+          "SpaceType": 1,
+          "NumberOfSpaces": 43,
+          "AvailableSpaces": 20
+        },
+        {
+          "SpaceType": 11,
+          "NumberOfSpaces": 1,
+          "AvailableSpaces": 1
+        }
+      ],
+      "ServiceStatus": 1,
+      "FullStatus": 0,
+      "ChargeStatus": 1,
+      "DataCollectTime": "2026-05-03T21:51:17+08:00"
+    },
+    {
+      "CarParkID": "162",
+      "CarParkName": {
+        "Zh_tw": "外澳服務區停車場"
+      },
+      "TotalSpaces": 140,
+      "AvailableSpaces": 133,
+      "Availabilities": [
+        {
+          "SpaceType": 1,
+          "NumberOfSpaces": 140,
+          "AvailableSpaces": 133
+        },
+        {
+          "SpaceType": 11,
+          "NumberOfSpaces": 0,
+          "AvailableSpaces": 0
+        }
+      ],
+      "ServiceStatus": 1,
+      "FullStatus": 0,
+      "ChargeStatus": 1,
+      "DataCollectTime": "2026-05-03T21:51:17+08:00"
+    },
+    {
+      "CarParkID": "165",
+      "CarParkName": {
+        "Zh_tw": "博客停車場-黎明國小場停車場"
+      },
+      "TotalSpaces": 38,
+      "AvailableSpaces": 0,
+      "Availabilities": [
+        {
+          "SpaceType": 1,
+          "NumberOfSpaces": 38,
+          "AvailableSpaces": 0
+        },
+        {
+          "SpaceType": 11,
+          "NumberOfSpaces": 1,
+          "AvailableSpaces": 0
+        }
+      ],
+      "ServiceStatus": 1,
+      "FullStatus": 2,
+      "ChargeStatus": 1,
+      "DataCollectTime": "2026-05-03T21:51:17+08:00"
+    },
+    {
+      "CarParkID": "169",
+      "CarParkName": {
+        "Zh_tw": "林森企業社停車場"
+      },
+      "TotalSpaces": 115,
+      "AvailableSpaces": 83,
+      "Availabilities": [
+        {
+          "SpaceType": 1,
+          "NumberOfSpaces": 115,
+          "AvailableSpaces": 83
+        },
+        {
+          "SpaceType": 11,
+          "NumberOfSpaces": 0,
+          "AvailableSpaces": 0
+        }
+      ],
+      "ServiceStatus": 1,
+      "FullStatus": 0,
+      "ChargeStatus": 1,
+      "DataCollectTime": "2026-05-03T21:51:17+08:00"
+    },
+    {
+      "CarParkID": "170",
+      "CarParkName": {
+        "Zh_tw": "信義停車場"
+      },
+      "TotalSpaces": 104,
+      "AvailableSpaces": 78,
+      "Availabilities": [
+        {
+          "SpaceType": 1,
+          "NumberOfSpaces": 104,
+          "AvailableSpaces": 78
+        },
+        {
+          "SpaceType": 11,
+          "NumberOfSpaces": 0,
+          "AvailableSpaces": 0
+        }
+      ],
+      "ServiceStatus": 1,
+      "FullStatus": 0,
+      "ChargeStatus": 1,
+      "DataCollectTime": "2026-05-03T21:51:17+08:00"
+    },
+    {
+      "CarParkID": "172",
+      "CarParkName": {
+        "Zh_tw": "中山站停車場"
+      },
+      "TotalSpaces": 10,
+      "AvailableSpaces": 3,
+      "Availabilities": [
+        {
+          "SpaceType": 1,
+          "NumberOfSpaces": 10,
+          "AvailableSpaces": 3
+        },
+        {
+          "SpaceType": 11,
+          "NumberOfSpaces": 0,
+          "AvailableSpaces": 0
+        }
+      ],
+      "ServiceStatus": 1,
+      "FullStatus": 0,
+      "ChargeStatus": 1,
+      "DataCollectTime": "2026-05-03T21:51:17+08:00"
+    },
+    {
+      "CarParkID": "174",
+      "CarParkName": {
+        "Zh_tw": "轉運站停車場"
+      },
+      "TotalSpaces": 49,
+      "AvailableSpaces": 23,
+      "Availabilities": [
+        {
+          "SpaceType": 1,
+          "NumberOfSpaces": 49,
+          "AvailableSpaces": 23
+        },
+        {
+          "SpaceType": 11,
+          "NumberOfSpaces": 0,
+          "AvailableSpaces": 0
+        }
+      ],
+      "ServiceStatus": 1,
+      "FullStatus": 0,
+      "ChargeStatus": 1,
+      "DataCollectTime": "2026-05-03T21:51:17+08:00"
+    },
+    {
+      "CarParkID": "175",
+      "CarParkName": {
+        "Zh_tw": "進徠停南屏站停車場"
+      },
+      "TotalSpaces": 43,
+      "AvailableSpaces": 55,
+      "Availabilities": [
+        {
+          "SpaceType": 1,
+          "NumberOfSpaces": 43,
+          "AvailableSpaces": 55
+        },
+        {
+          "SpaceType": 11,
+          "NumberOfSpaces": 1,
+          "AvailableSpaces": 0
+        }
+      ],
+      "ServiceStatus": 1,
+      "FullStatus": 0,
+      "ChargeStatus": 1,
+      "DataCollectTime": "2026-05-03T21:51:17+08:00"
+    },
+    {
+      "CarParkID": "176",
+      "CarParkName": {
+        "Zh_tw": "博愛停車場"
+      },
+      "TotalSpaces": 91,
+      "AvailableSpaces": 53,
+      "Availabilities": [
+        {
+          "SpaceType": 1,
+          "NumberOfSpaces": 91,
+          "AvailableSpaces": 53
+        },
+        {
+          "SpaceType": 11,
+          "NumberOfSpaces": 0,
+          "AvailableSpaces": 0
+        }
+      ],
+      "ServiceStatus": 1,
+      "FullStatus": 0,
+      "ChargeStatus": 1,
+      "DataCollectTime": "2026-05-03T21:51:17+08:00"
+    },
+    {
+      "CarParkID": "184",
+      "CarParkName": {
+        "Zh_tw": "宜蘭縣農會停車場"
+      },
+      "TotalSpaces": 80,
+      "AvailableSpaces": 34,
+      "Availabilities": [
+        {
+          "SpaceType": 1,
+          "NumberOfSpaces": 80,
+          "AvailableSpaces": 34
+        },
+        {
+          "SpaceType": 11,
+          "NumberOfSpaces": 0,
+          "AvailableSpaces": 0
+        }
+      ],
+      "ServiceStatus": 1,
+      "FullStatus": 0,
+      "ChargeStatus": 1,
+      "DataCollectTime": "2026-05-03T21:51:17+08:00"
+    },
+    {
+      "CarParkID": "185",
+      "CarParkName": {
+        "Zh_tw": "TIMES宜蘭中華路停車場"
+      },
+      "TotalSpaces": 38,
+      "AvailableSpaces": 8,
+      "Availabilities": [
+        {
+          "SpaceType": 1,
+          "NumberOfSpaces": 38,
+          "AvailableSpaces": 8
+        },
+        {
+          "SpaceType": 11,
+          "NumberOfSpaces": 1,
+          "AvailableSpaces": 1
+        }
+      ],
+      "ServiceStatus": 1,
+      "FullStatus": 0,
+      "ChargeStatus": 1,
+      "DataCollectTime": "2026-05-03T21:51:17+08:00"
+    },
+    {
+      "CarParkID": "1",
+      "CarParkName": {
+        "Zh_tw": "國立宜蘭大學停車場"
+      },
+      "TotalSpaces": 400,
+      "AvailableSpaces": 321,
+      "Availabilities": [
+        {
+          "SpaceType": 1,
+          "NumberOfSpaces": 400,
+          "AvailableSpaces": 321
+        },
+        {
+          "SpaceType": 11,
+          "NumberOfSpaces": 0,
+          "AvailableSpaces": 0
+        }
+      ],
+      "ServiceStatus": 1,
+      "FullStatus": 0,
+      "ChargeStatus": 1,
+      "DataCollectTime": "2026-05-03T21:51:17+08:00"
+    },
+    {
+      "CarParkID": "3",
+      "CarParkName": {
+        "Zh_tw": "宜蘭市公共造產中央臨時收費停車場"
+      },
+      "TotalSpaces": 182,
+      "AvailableSpaces": 145,
+      "Availabilities": [
+        {
+          "SpaceType": 1,
+          "NumberOfSpaces": 182,
+          "AvailableSpaces": 145
+        },
+        {
+          "SpaceType": 11,
+          "NumberOfSpaces": 0,
+          "AvailableSpaces": 0
+        }
+      ],
+      "ServiceStatus": 1,
+      "FullStatus": 0,
+      "ChargeStatus": 1,
+      "DataCollectTime": "2026-05-03T21:51:17+08:00"
+    },
+    {
+      "CarParkID": "7",
+      "CarParkName": {
+        "Zh_tw": "國立陽明交通大學附設醫院停車場"
+      },
+      "TotalSpaces": 300,
+      "AvailableSpaces": 270,
+      "Availabilities": [
+        {
+          "SpaceType": 1,
+          "NumberOfSpaces": 300,
+          "AvailableSpaces": 270
+        },
+        {
+          "SpaceType": 11,
+          "NumberOfSpaces": 0,
+          "AvailableSpaces": 0
+        }
+      ],
+      "ServiceStatus": 1,
+      "FullStatus": 0,
+      "ChargeStatus": 1,
+      "DataCollectTime": "2026-05-03T21:51:17+08:00"
+    },
+    {
+      "CarParkID": "152",
+      "CarParkName": {
+        "Zh_tw": "台灣聯通宜蘭健康場停車場"
+      },
+      "TotalSpaces": 13,
+      "AvailableSpaces": 0,
+      "Availabilities": [
+        {
+          "SpaceType": 1,
+          "NumberOfSpaces": 13,
+          "AvailableSpaces": 0
+        },
+        {
+          "SpaceType": 11,
+          "NumberOfSpaces": 0,
+          "AvailableSpaces": 0
+        }
+      ],
+      "ServiceStatus": 1,
+      "FullStatus": 2,
+      "ChargeStatus": 1,
+      "DataCollectTime": "2026-05-03T21:51:17+08:00"
+    },
+    {
+      "CarParkID": "8",
+      "CarParkName": {
+        "Zh_tw": "宜蘭停七停車場"
+      },
+      "TotalSpaces": 1008,
+      "AvailableSpaces": 509,
+      "Availabilities": [
+        {
+          "SpaceType": 1,
+          "NumberOfSpaces": 1008,
+          "AvailableSpaces": 509
+        },
+        {
+          "SpaceType": 11,
+          "NumberOfSpaces": 0,
+          "AvailableSpaces": 0
+        }
+      ],
+      "ServiceStatus": 1,
+      "FullStatus": 0,
+      "ChargeStatus": 1,
+      "DataCollectTime": "2026-05-03T21:51:17+08:00"
+    },
+    {
+      "CarParkID": "19",
+      "CarParkName": {
+        "Zh_tw": "宜蘭新月站停車場"
+      },
+      "TotalSpaces": 100,
+      "AvailableSpaces": 57,
+      "Availabilities": [
+        {
+          "SpaceType": 1,
+          "NumberOfSpaces": 100,
+          "AvailableSpaces": 57
+        },
+        {
+          "SpaceType": 11,
+          "NumberOfSpaces": 0,
+          "AvailableSpaces": 0
+        }
+      ],
+      "ServiceStatus": 1,
+      "FullStatus": 0,
+      "ChargeStatus": 1,
+      "DataCollectTime": "2026-05-03T21:51:17+08:00"
+    },
+    {
+      "CarParkID": "22",
+      "CarParkName": {
+        "Zh_tw": "國立陽明交通大學附設醫院蘭陽院區停車場"
+      },
+      "TotalSpaces": 1069,
+      "AvailableSpaces": 1279,
+      "Availabilities": [
+        {
+          "SpaceType": 1,
+          "NumberOfSpaces": 1069,
+          "AvailableSpaces": 1279
+        },
+        {
+          "SpaceType": 11,
+          "NumberOfSpaces": 0,
+          "AvailableSpaces": 0
+        }
+      ],
+      "ServiceStatus": 1,
+      "FullStatus": 0,
+      "ChargeStatus": 1,
+      "DataCollectTime": "2026-05-03T21:51:17+08:00"
+    },
+    {
+      "CarParkID": "23",
+      "CarParkName": {
+        "Zh_tw": "清標停車場"
+      },
+      "TotalSpaces": 84,
+      "AvailableSpaces": 68,
+      "Availabilities": [
+        {
+          "SpaceType": 1,
+          "NumberOfSpaces": 84,
+          "AvailableSpaces": 68
+        },
+        {
+          "SpaceType": 11,
+          "NumberOfSpaces": 0,
+          "AvailableSpaces": 0
+        }
+      ],
+      "ServiceStatus": 1,
+      "FullStatus": 0,
+      "ChargeStatus": 1,
+      "DataCollectTime": "2026-05-03T21:51:17+08:00"
+    },
+    {
+      "CarParkID": "24",
+      "CarParkName": {
+        "Zh_tw": "通安企業社停車場"
+      },
+      "TotalSpaces": 83,
+      "AvailableSpaces": 57,
+      "Availabilities": [
+        {
+          "SpaceType": 1,
+          "NumberOfSpaces": 83,
+          "AvailableSpaces": 57
+        },
+        {
+          "SpaceType": 11,
+          "NumberOfSpaces": 0,
+          "AvailableSpaces": 0
+        }
+      ],
+      "ServiceStatus": 1,
+      "FullStatus": 0,
+      "ChargeStatus": 1,
+      "DataCollectTime": "2026-05-03T21:51:17+08:00"
+    },
+    {
+      "CarParkID": "25",
+      "CarParkName": {
+        "Zh_tw": "宜蘭幸福（停六）停車場"
+      },
+      "TotalSpaces": 100,
+      "AvailableSpaces": 69,
+      "Availabilities": [
+        {
+          "SpaceType": 1,
+          "NumberOfSpaces": 100,
+          "AvailableSpaces": 69
+        },
+        {
+          "SpaceType": 11,
+          "NumberOfSpaces": 0,
+          "AvailableSpaces": 0
+        }
+      ],
+      "ServiceStatus": 1,
+      "FullStatus": 0,
+      "ChargeStatus": 1,
+      "DataCollectTime": "2026-05-03T21:51:17+08:00"
+    },
+    {
+      "CarParkID": "26",
+      "CarParkName": {
+        "Zh_tw": "羅東立體停車場"
+      },
+      "TotalSpaces": 241,
+      "AvailableSpaces": 147,
+      "Availabilities": [
+        {
+          "SpaceType": 1,
+          "NumberOfSpaces": 241,
+          "AvailableSpaces": 147
+        },
+        {
+          "SpaceType": 11,
+          "NumberOfSpaces": 0,
+          "AvailableSpaces": 0
+        }
+      ],
+      "ServiceStatus": 1,
+      "FullStatus": 0,
+      "ChargeStatus": 1,
+      "DataCollectTime": "2026-05-03T21:51:17+08:00"
+    },
+    {
+      "CarParkID": "27",
+      "CarParkName": {
+        "Zh_tw": "宜蘭縣羅東鎮南門地下停車場"
+      },
+      "TotalSpaces": 279,
+      "AvailableSpaces": 230,
+      "Availabilities": [
+        {
+          "SpaceType": 1,
+          "NumberOfSpaces": 279,
+          "AvailableSpaces": 230
+        },
+        {
+          "SpaceType": 11,
+          "NumberOfSpaces": 0,
+          "AvailableSpaces": 0
+        }
+      ],
+      "ServiceStatus": 1,
+      "FullStatus": 0,
+      "ChargeStatus": 1,
+      "DataCollectTime": "2026-05-03T21:51:17+08:00"
+    },
+    {
+      "CarParkID": "28",
+      "CarParkName": {
+        "Zh_tw": "民生商場停車場"
+      },
+      "TotalSpaces": 352,
+      "AvailableSpaces": 239,
+      "Availabilities": [
+        {
+          "SpaceType": 1,
+          "NumberOfSpaces": 352,
+          "AvailableSpaces": 239
+        },
+        {
+          "SpaceType": 11,
+          "NumberOfSpaces": 0,
+          "AvailableSpaces": 0
+        }
+      ],
+      "ServiceStatus": 1,
+      "FullStatus": 0,
+      "ChargeStatus": 1,
+      "DataCollectTime": "2026-05-03T21:51:17+08:00"
+    },
+    {
+      "CarParkID": "29",
+      "CarParkName": {
+        "Zh_tw": "羅東鎮公共造產停車場(公所前停車場)"
+      },
+      "TotalSpaces": 38,
+      "AvailableSpaces": 17,
+      "Availabilities": [
+        {
+          "SpaceType": 1,
+          "NumberOfSpaces": 38,
+          "AvailableSpaces": 17
+        },
+        {
+          "SpaceType": 11,
+          "NumberOfSpaces": 0,
+          "AvailableSpaces": 0
+        }
+      ],
+      "ServiceStatus": 1,
+      "FullStatus": 0,
+      "ChargeStatus": 1,
+      "DataCollectTime": "2026-05-03T21:51:17+08:00"
+    },
+    {
+      "CarParkID": "30",
+      "CarParkName": {
+        "Zh_tw": "羅東鎮公共造產停車場(公所前廣庭停車場)"
+      },
+      "TotalSpaces": 30,
+      "AvailableSpaces": 13,
+      "Availabilities": [
+        {
+          "SpaceType": 1,
+          "NumberOfSpaces": 30,
+          "AvailableSpaces": 13
+        },
+        {
+          "SpaceType": 11,
+          "NumberOfSpaces": 0,
+          "AvailableSpaces": 0
+        }
+      ],
+      "ServiceStatus": 1,
+      "FullStatus": 0,
+      "ChargeStatus": 1,
+      "DataCollectTime": "2026-05-03T21:51:17+08:00"
+    },
+    {
+      "CarParkID": "31",
+      "CarParkName": {
+        "Zh_tw": "羅東公正地下停車場"
+      },
+      "TotalSpaces": 351,
+      "AvailableSpaces": 153,
+      "Availabilities": [
+        {
+          "SpaceType": 1,
+          "NumberOfSpaces": 351,
+          "AvailableSpaces": 153
+        },
+        {
+          "SpaceType": 11,
+          "NumberOfSpaces": 0,
+          "AvailableSpaces": 0
+        }
+      ],
+      "ServiceStatus": 1,
+      "FullStatus": 0,
+      "ChargeStatus": 1,
+      "DataCollectTime": "2026-05-03T21:51:17+08:00"
+    },
+    {
+      "CarParkID": "32",
+      "CarParkName": {
+        "Zh_tw": "羅東林業文化園區停車場"
+      },
+      "TotalSpaces": 140,
+      "AvailableSpaces": 97,
+      "Availabilities": [
+        {
+          "SpaceType": 1,
+          "NumberOfSpaces": 140,
+          "AvailableSpaces": 97
+        },
+        {
+          "SpaceType": 11,
+          "NumberOfSpaces": 0,
+          "AvailableSpaces": 0
+        }
+      ],
+      "ServiceStatus": 1,
+      "FullStatus": 0,
+      "ChargeStatus": 1,
+      "DataCollectTime": "2026-05-03T21:51:17+08:00"
+    },
+    {
+      "CarParkID": "33",
+      "CarParkName": {
+        "Zh_tw": "羅東停一停車場"
+      },
+      "TotalSpaces": 66,
+      "AvailableSpaces": 55,
+      "Availabilities": [
+        {
+          "SpaceType": 1,
+          "NumberOfSpaces": 66,
+          "AvailableSpaces": 55
+        },
+        {
+          "SpaceType": 11,
+          "NumberOfSpaces": 0,
+          "AvailableSpaces": 0
+        }
+      ],
+      "ServiceStatus": 1,
+      "FullStatus": 0,
+      "ChargeStatus": 1,
+      "DataCollectTime": "2026-05-03T21:51:17+08:00"
+    },
+    {
+      "CarParkID": "34",
+      "CarParkName": {
+        "Zh_tw": "羅東停三停車場"
+      },
+      "TotalSpaces": 75,
+      "AvailableSpaces": 68,
+      "Availabilities": [
+        {
+          "SpaceType": 1,
+          "NumberOfSpaces": 75,
+          "AvailableSpaces": 68
+        },
+        {
+          "SpaceType": 11,
+          "NumberOfSpaces": 0,
+          "AvailableSpaces": 0
+        }
+      ],
+      "ServiceStatus": 1,
+      "FullStatus": 0,
+      "ChargeStatus": 1,
+      "DataCollectTime": "2026-05-03T21:51:17+08:00"
+    },
+    {
+      "CarParkID": "35",
+      "CarParkName": {
+        "Zh_tw": "公正平面停車場"
+      },
+      "TotalSpaces": 47,
+      "AvailableSpaces": 38,
+      "Availabilities": [
+        {
+          "SpaceType": 1,
+          "NumberOfSpaces": 47,
+          "AvailableSpaces": 38
+        },
+        {
+          "SpaceType": 11,
+          "NumberOfSpaces": 0,
+          "AvailableSpaces": 0
+        }
+      ],
+      "ServiceStatus": 1,
+      "FullStatus": 0,
+      "ChargeStatus": 1,
+      "DataCollectTime": "2026-05-03T21:51:17+08:00"
+    },
+    {
+      "CarParkID": "37",
+      "CarParkName": {
+        "Zh_tw": "宜蘭縣政府文化局羅東文化工場停車場"
+      },
+      "TotalSpaces": 182,
+      "AvailableSpaces": 30,
+      "Availabilities": [
+        {
+          "SpaceType": 1,
+          "NumberOfSpaces": 182,
+          "AvailableSpaces": 30
+        },
+        {
+          "SpaceType": 11,
+          "NumberOfSpaces": 1,
+          "AvailableSpaces": 0
+        }
+      ],
+      "ServiceStatus": 1,
+      "FullStatus": 0,
+      "ChargeStatus": 1,
+      "DataCollectTime": "2026-05-03T21:51:17+08:00"
+    },
+    {
+      "CarParkID": "42",
+      "CarParkName": {
+        "Zh_tw": "財團法人天主教靈醫會羅東聖母醫院停車場"
+      },
+      "TotalSpaces": 219,
+      "AvailableSpaces": 145,
+      "Availabilities": [
+        {
+          "SpaceType": 1,
+          "NumberOfSpaces": 219,
+          "AvailableSpaces": 145
+        },
+        {
+          "SpaceType": 11,
+          "NumberOfSpaces": 0,
+          "AvailableSpaces": 0
+        }
+      ],
+      "ServiceStatus": 1,
+      "FullStatus": 0,
+      "ChargeStatus": 1,
+      "DataCollectTime": "2026-05-03T21:51:17+08:00"
+    },
+    {
+      "CarParkID": "44",
+      "CarParkName": {
+        "Zh_tw": "蘇澳鎮冷泉停車場"
+      },
+      "TotalSpaces": 109,
+      "AvailableSpaces": 73,
+      "Availabilities": [
+        {
+          "SpaceType": 1,
+          "NumberOfSpaces": 109,
+          "AvailableSpaces": 73
+        },
+        {
+          "SpaceType": 11,
+          "NumberOfSpaces": 0,
+          "AvailableSpaces": 0
+        }
+      ],
+      "ServiceStatus": 1,
+      "FullStatus": 0,
+      "ChargeStatus": 1,
+      "DataCollectTime": "2026-05-03T21:51:17+08:00"
+    },
+    {
+      "CarParkID": "48",
+      "CarParkName": {
+        "Zh_tw": "豆腐岬風景區停車場"
+      },
+      "TotalSpaces": 500,
+      "AvailableSpaces": 48,
+      "Availabilities": [
+        {
+          "SpaceType": 1,
+          "NumberOfSpaces": 500,
+          "AvailableSpaces": 48
+        },
+        {
+          "SpaceType": 11,
+          "NumberOfSpaces": 0,
+          "AvailableSpaces": 0
+        }
+      ],
+      "ServiceStatus": 1,
+      "FullStatus": 0,
+      "ChargeStatus": 1,
+      "DataCollectTime": "2026-05-03T21:51:17+08:00"
+    },
+    {
+      "CarParkID": "50",
+      "CarParkName": {
+        "Zh_tw": "蘭陽博物館停車場"
+      },
+      "TotalSpaces": 200,
+      "AvailableSpaces": 146,
+      "Availabilities": [
+        {
+          "SpaceType": 1,
+          "NumberOfSpaces": 200,
+          "AvailableSpaces": 146
+        },
+        {
+          "SpaceType": 11,
+          "NumberOfSpaces": 1,
+          "AvailableSpaces": 0
+        }
+      ],
+      "ServiceStatus": 1,
+      "FullStatus": 0,
+      "ChargeStatus": 1,
+      "DataCollectTime": "2026-05-03T21:51:17+08:00"
+    },
+    {
+      "CarParkID": "51",
+      "CarParkName": {
+        "Zh_tw": "忠僕停車場"
+      },
+      "TotalSpaces": 42,
+      "AvailableSpaces": 30,
+      "Availabilities": [
+        {
+          "SpaceType": 1,
+          "NumberOfSpaces": 42,
+          "AvailableSpaces": 30
+        },
+        {
+          "SpaceType": 11,
+          "NumberOfSpaces": 0,
+          "AvailableSpaces": 0
+        }
+      ],
+      "ServiceStatus": 1,
+      "FullStatus": 0,
+      "ChargeStatus": 1,
+      "DataCollectTime": "2026-05-03T21:51:17+08:00"
+    },
+    {
+      "CarParkID": "52",
+      "CarParkName": {
+        "Zh_tw": "大溪停車場"
+      },
+      "TotalSpaces": 120,
+      "AvailableSpaces": 116,
+      "Availabilities": [
+        {
+          "SpaceType": 1,
+          "NumberOfSpaces": 120,
+          "AvailableSpaces": 116
+        },
+        {
+          "SpaceType": 11,
+          "NumberOfSpaces": 0,
+          "AvailableSpaces": 0
+        }
+      ],
+      "ServiceStatus": 1,
+      "FullStatus": 0,
+      "ChargeStatus": 1,
+      "DataCollectTime": "2026-05-03T21:51:17+08:00"
+    },
+    {
+      "CarParkID": "54",
+      "CarParkName": {
+        "Zh_tw": "礁溪水景廣場停車場"
+      },
+      "TotalSpaces": 182,
+      "AvailableSpaces": 40,
+      "Availabilities": [
+        {
+          "SpaceType": 1,
+          "NumberOfSpaces": 182,
+          "AvailableSpaces": 40
+        },
+        {
+          "SpaceType": 11,
+          "NumberOfSpaces": 1,
+          "AvailableSpaces": 0
+        }
+      ],
+      "ServiceStatus": 1,
+      "FullStatus": 0,
+      "ChargeStatus": 1,
+      "DataCollectTime": "2026-05-03T21:51:17+08:00"
+    },
+    {
+      "CarParkID": "58",
+      "CarParkName": {
+        "Zh_tw": "礁溪轉運站附設停車場"
+      },
+      "TotalSpaces": 65,
+      "AvailableSpaces": 10,
+      "Availabilities": [
+        {
+          "SpaceType": 1,
+          "NumberOfSpaces": 65,
+          "AvailableSpaces": 10
+        },
+        {
+          "SpaceType": 11,
+          "NumberOfSpaces": 1,
+          "AvailableSpaces": 0
+        }
+      ],
+      "ServiceStatus": 1,
+      "FullStatus": 0,
+      "ChargeStatus": 1,
+      "DataCollectTime": "2026-05-03T21:51:17+08:00"
+    },
+    {
+      "CarParkID": "62",
+      "CarParkName": {
+        "Zh_tw": "礁溪麒麟酒店停車場"
+      },
+      "TotalSpaces": 239,
+      "AvailableSpaces": 99,
+      "Availabilities": [
+        {
+          "SpaceType": 1,
+          "NumberOfSpaces": 239,
+          "AvailableSpaces": 99
+        },
+        {
+          "SpaceType": 11,
+          "NumberOfSpaces": 0,
+          "AvailableSpaces": 0
+        }
+      ],
+      "ServiceStatus": 1,
+      "FullStatus": 0,
+      "ChargeStatus": 1,
+      "DataCollectTime": "2026-05-03T21:51:17+08:00"
+    },
+    {
+      "CarParkID": "64",
+      "CarParkName": {
+        "Zh_tw": "中興文化創意產業園區停車場"
+      },
+      "TotalSpaces": 61,
+      "AvailableSpaces": 60,
+      "Availabilities": [
+        {
+          "SpaceType": 1,
+          "NumberOfSpaces": 61,
+          "AvailableSpaces": 60
+        },
+        {
+          "SpaceType": 11,
+          "NumberOfSpaces": 1,
+          "AvailableSpaces": 1
+        }
+      ],
+      "ServiceStatus": 1,
+      "FullStatus": 0,
+      "ChargeStatus": 1,
+      "DataCollectTime": "2026-05-03T21:51:17+08:00"
+    },
+    {
+      "CarParkID": "69",
+      "CarParkName": {
+        "Zh_tw": "冬山停一停車場"
+      },
+      "TotalSpaces": 80,
+      "AvailableSpaces": 80,
+      "Availabilities": [
+        {
+          "SpaceType": 1,
+          "NumberOfSpaces": 80,
+          "AvailableSpaces": 80
+        },
+        {
+          "SpaceType": 11,
+          "NumberOfSpaces": 0,
+          "AvailableSpaces": 0
+        }
+      ],
+      "ServiceStatus": 1,
+      "FullStatus": 0,
+      "ChargeStatus": 1,
+      "DataCollectTime": "2026-05-03T21:51:17+08:00"
+    },
+    {
+      "CarParkID": "76",
+      "CarParkName": {
+        "Zh_tw": "嘟嘟房宜蘭中山公園站"
+      },
+      "TotalSpaces": 91,
+      "AvailableSpaces": 75,
+      "Availabilities": [
+        {
+          "SpaceType": 1,
+          "NumberOfSpaces": 91,
+          "AvailableSpaces": 75
+        },
+        {
+          "SpaceType": 11,
+          "NumberOfSpaces": 1,
+          "AvailableSpaces": 0
+        }
+      ],
+      "ServiceStatus": 1,
+      "FullStatus": 0,
+      "ChargeStatus": 1,
+      "DataCollectTime": "2026-05-03T21:51:17+08:00"
+    },
+    {
+      "CarParkID": "104",
+      "CarParkName": {
+        "Zh_tw": "宜蘭宜興（停一）停車場"
+      },
+      "TotalSpaces": 65,
+      "AvailableSpaces": 47,
+      "Availabilities": [
+        {
+          "SpaceType": 1,
+          "NumberOfSpaces": 65,
+          "AvailableSpaces": 47
+        },
+        {
+          "SpaceType": 11,
+          "NumberOfSpaces": 0,
+          "AvailableSpaces": 0
+        }
+      ],
+      "ServiceStatus": 1,
+      "FullStatus": 0,
+      "ChargeStatus": 1,
+      "DataCollectTime": "2026-05-03T21:51:17+08:00"
+    },
+    {
+      "CarParkID": "81",
+      "CarParkName": {
+        "Zh_tw": "TIMES羅東車站前停車場"
+      },
+      "TotalSpaces": 174,
+      "AvailableSpaces": 49,
+      "Availabilities": [
+        {
+          "SpaceType": 1,
+          "NumberOfSpaces": 174,
+          "AvailableSpaces": 49
+        },
+        {
+          "SpaceType": 11,
+          "NumberOfSpaces": 0,
+          "AvailableSpaces": 0
+        }
+      ],
+      "ServiceStatus": 1,
+      "FullStatus": 0,
+      "ChargeStatus": 1,
+      "DataCollectTime": "2026-05-03T21:51:17+08:00"
+    },
+    {
+      "CarParkID": "84",
+      "CarParkName": {
+        "Zh_tw": "TIMES羅東光榮路停車場"
+      },
+      "TotalSpaces": 36,
+      "AvailableSpaces": 32,
+      "Availabilities": [
+        {
+          "SpaceType": 1,
+          "NumberOfSpaces": 36,
+          "AvailableSpaces": 32
+        },
+        {
+          "SpaceType": 11,
+          "NumberOfSpaces": 0,
+          "AvailableSpaces": 0
+        }
+      ],
+      "ServiceStatus": 1,
+      "FullStatus": 0,
+      "ChargeStatus": 1,
+      "DataCollectTime": "2026-05-03T21:51:17+08:00"
+    },
+    {
+      "CarParkID": "87",
+      "CarParkName": {
+        "Zh_tw": "羅東停四停車場(機車)"
+      },
+      "TotalSpaces": 141,
+      "AvailableSpaces": 15,
+      "Availabilities": [
+        {
+          "SpaceType": 1,
+          "NumberOfSpaces": 141,
+          "AvailableSpaces": 15
+        },
+        {
+          "SpaceType": 11,
+          "NumberOfSpaces": 1,
+          "AvailableSpaces": 0
+        }
+      ],
+      "ServiceStatus": 1,
+      "FullStatus": 0,
+      "ChargeStatus": 1,
+      "DataCollectTime": "2026-05-03T21:51:17+08:00"
+    },
+    {
+      "CarParkID": "88",
+      "CarParkName": {
+        "Zh_tw": "TIMES羅東中華路停車場"
+      },
+      "TotalSpaces": 25,
+      "AvailableSpaces": 14,
+      "Availabilities": [
+        {
+          "SpaceType": 1,
+          "NumberOfSpaces": 25,
+          "AvailableSpaces": 14
+        },
+        {
+          "SpaceType": 11,
+          "NumberOfSpaces": 0,
+          "AvailableSpaces": 0
+        }
+      ],
+      "ServiceStatus": 1,
+      "FullStatus": 0,
+      "ChargeStatus": 1,
+      "DataCollectTime": "2026-05-03T21:51:17+08:00"
+    },
+    {
+      "CarParkID": "92",
+      "CarParkName": {
+        "Zh_tw": "湯圍溝停車場"
+      },
+      "TotalSpaces": 55,
+      "AvailableSpaces": 55,
+      "Availabilities": [
+        {
+          "SpaceType": 1,
+          "NumberOfSpaces": 55,
+          "AvailableSpaces": 55
+        },
+        {
+          "SpaceType": 11,
+          "NumberOfSpaces": 0,
+          "AvailableSpaces": 0
+        }
+      ],
+      "ServiceStatus": 1,
+      "FullStatus": 0,
+      "ChargeStatus": 1,
+      "DataCollectTime": "2026-05-03T21:51:17+08:00"
+    },
+    {
+      "CarParkID": "94",
+      "CarParkName": {
+        "Zh_tw": "富紳礁溪第一停車場"
+      },
+      "TotalSpaces": 100,
+      "AvailableSpaces": 36,
+      "Availabilities": [
+        {
+          "SpaceType": 1,
+          "NumberOfSpaces": 100,
+          "AvailableSpaces": 36
+        },
+        {
+          "SpaceType": 11,
+          "NumberOfSpaces": 0,
+          "AvailableSpaces": 0
+        }
+      ],
+      "ServiceStatus": 1,
+      "FullStatus": 0,
+      "ChargeStatus": 1,
+      "DataCollectTime": "2026-05-03T21:51:17+08:00"
+    }
+  ]
+}

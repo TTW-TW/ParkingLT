@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>ParkingLT - 宜蘭停車資訊檢視</title>
+
+        <link
+            rel="stylesheet"
+            href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        />
+
+        <style>
+            body,
+            html {
+                margin: 0;
+                padding: 0;
+                height: 100%;
+                width: 100%;
+                font-family: "Microsoft JhengHei", sans-serif;
+            }
+            #map {
+                height: 100%;
+                width: 100%;
+                z-index: 1;
+            }
+
+            /* 右上角統計資訊面板 */
+            .info-panel {
+                position: absolute;
+                top: 20px;
+                right: 20px;
+                z-index: 1000;
+                background: rgba(255, 255, 255, 0.95);
+                padding: 15px;
+                border-radius: 12px;
+                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+                max-width: 280px;
+                border: 1px solid #ddd;
+            }
+            .info-panel h3 {
+                margin: 0 0 10px 0;
+                font-size: 18px;
+                color: #333;
+            }
+            .stat-item {
+                font-size: 14px;
+                margin-bottom: 5px;
+                color: #555;
+            }
+
+            /* 長輩友善彈出視窗樣式 */
+            .elder-popup {
+                font-size: 18px;
+                line-height: 1.6;
+                min-width: 220px;
+            }
+            .elder-popup b {
+                color: #000;
+                font-size: 20px;
+            }
+            .badge {
+                display: inline-block;
+                padding: 4px 12px;
+                border-radius: 6px;
+                font-weight: bold;
+                margin-top: 8px;
+                font-size: 16px;
+            }
+            .has-data {
+                background-color: #e3f2fd;
+                color: #1976d2;
+                border: 1px solid #bbdefb;
+            }
+            .no-data {
+                background-color: #f5f5f5;
+                color: #757575;
+                border: 1px solid #e0e0e0;
+            }
+            .avail-num {
+                font-size: 24px;
+                color: #d32f2f;
+            } /* 顯眼的紅色數字 */
+        </style>
+    </head>
+    <body>
+        <div class="info-panel">
+            <h3>ParkingLT 數據統計</h3>
+            <div id="stat-content">讀取資料中...</div>
+            <hr style="margin: 10px 0; border: 0; border-top: 1px solid #eee" />
+            <div class="stat-item">🔵 藍色點：含即時車位</div>
+            <div class="stat-item">⚪ 灰色點：僅提供基本資訊</div>
+        </div>
+
+        <div id="map"></div>
+
+        <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+        <script src="script.js"></script>
+    </body>
+</html>
