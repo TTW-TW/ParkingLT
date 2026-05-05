@@ -1,0 +1,16 @@
+body {
+    background-color: #c8e6c9;
+    font-family: "Microsoft JhengHei", sans-serif;
+}
+#map {
+    height: 350px;
+    width: 100%;
+    border: 1px solid #455a64;
+}
+#greeting-section {
+    background-color: rgb(138, 217, 225);
+}
+.active-site {
+    background-color: #18541c !important;
+    color: white;
+}

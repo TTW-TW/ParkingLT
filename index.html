@@ -1,92 +1,136 @@
 <!doctype html>
-<html lang="zh-Hant-TW">
+<html lang="zh-TW">
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>ParkingLT - 宜蘭即時停車地圖</title>
+        <meta
+            name="description"
+            content="查看首都還有沒有車位，不用聰明也會用"
+        />
+        <title>還有車位嗎 🚗</title>
+        <script src="https://cdn.tailwindcss.com"></script>
         <link
             rel="stylesheet"
             href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
         />
-        <style>
-            body,
-            html {
-                margin: 0;
-                padding: 0;
-                height: 100%;
-                width: 100%;
-                font-family: "Microsoft JhengHei", sans-serif;
-            }
-            #map {
-                height: 100%;
-                width: 100%;
-                z-index: 1;
-            }
-            .info-panel {
-                position: absolute;
-                top: 20px;
-                right: 20px;
-                z-index: 1000;
-                background: rgba(255, 255, 255, 0.95);
-                padding: 15px;
-                border-radius: 12px;
-                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
-                max-width: 280px;
-                border: 1px solid #ddd;
-            }
-            .elder-popup {
-                font-size: 18px;
-                line-height: 1.5;
-                min-width: 250px;
-            }
-            .elder-popup b {
-                font-size: 22px;
-                color: #000;
-            }
-            .fee-info {
-                background: #fff9c4;
-                padding: 5px;
-                border-radius: 4px;
-                margin: 8px 0;
-                font-size: 16px;
-                border-left: 5px solid #fbc02d;
-            }
-            .badge {
-                display: inline-block;
-                padding: 6px 12px;
-                border-radius: 8px;
-                font-weight: bold;
-                margin-top: 8px;
-                font-size: 18px;
-                width: 100%;
-                text-align: center;
-                box-sizing: border-box;
-            }
-            .has-data {
-                background-color: #e8f5e9;
-                color: #2e7d32;
-                border: 1px solid #c8e6c9;
-            }
-            .no-data {
-                background-color: #ffebee;
-                color: #c62828;
-                border: 1px solid #ffcdd2;
-            }
-            .avail-num {
-                font-size: 28px;
-                color: #d32f2f;
-            }
-        </style>
+        <link rel="stylesheet" href="./style.css" />
     </head>
-    <body>
-        <div class="info-panel">
-            <h3 style="margin: 0">ParkingLT 縣府資料源</h3>
-            <div id="stat-content" style="margin-top: 10px">
-                讀取 JSON 檔案中...
+    <body class="p-4 max-w-md mx-auto">
+        <div id="greeting-section" class="flex items-center mb-4">
+            <img
+                id="greeting-img"
+                src=""
+                alt="greeting"
+                class="w-10 h-10 m-2"
+            />
+            <div class="italic" id="greeting-text">載入中...</div>
+        </div>
+
+        <div class="flex justify-between items-center mb-4">
+            <div class="text-sm">
+                資料更新時間：<span id="update-time">-- : -- : --</span>
+            </div>
+            <button
+                id="refresh-btn"
+                class="bg-green-800 text-white px-4 py-1 rounded shadow text-sm active:bg-green-900"
+            >
+                刷新
+            </button>
+        </div>
+
+        <div
+            class="grid grid-cols-4 gap-0 mb-6 border font-bold border-gray-600 rounded overflow-hidden text-center"
+            id="site-buttons"
+        ></div>
+
+        <!-- index.html - 修改 parking-info-section -->
+        <div id="parking-info-section" class="mb-6">
+            <!-- 加入 touch-area 方便綁定滑動事件 -->
+            <div id="touch-area">
+                <div class="flex justify-between items-center mb-4 px-2">
+                    <!-- 設定固定寬度並靠左/靠右對齊 -->
+                    <button
+                        id="prev-parking"
+                        class="w-10 text-3xl font-bold text-green-800 active:scale-95 transition-transform text-left"
+                    >
+                        ◀
+                    </button>
+                    <h2
+                        id="parking-name"
+                        class="text-lg font-bold text-center flex-grow truncate px-2"
+                    >
+                        載入中...
+                    </h2>
+                    <button
+                        id="next-parking"
+                        class="w-10 text-3xl font-bold text-green-800 active:scale-95 transition-transform text-right"
+                    >
+                        ▶
+                    </button>
+                </div>
+                <div
+                    class="bg-gray-50 p-4 rounded-xl border border-gray-400 shadow-sm text-lg"
+                >
+                    <div class="flex justify-between items-center mb-2">
+                        <span>剩餘車位：</span>
+                        <span
+                            id="slots-color-container"
+                            class="font-bold text-green-600"
+                        >
+                            <span id="available-slots" class="text-2xl"
+                                >--</span
+                            >
+                            個
+                        </span>
+                        <span>總共：</span>
+                        <span><span id="total-slots">--</span> 個</span>
+                    </div>
+                    <div class="flex items-start text-sm text-gray-600">
+                        <span class="whitespace-nowrap">地址：</span>
+                        <span id="parking-address" class="flex-grow">--</span>
+                        <a
+                            id="google-nav"
+                            href="#"
+                            target="_blank"
+                            class="ml-2 flex items-center text-blue-600 whitespace-nowrap"
+                        >
+                            導航
+                            <img
+                                src="img/googlemapIcon.svg"
+                                class="w-5 h-4 ml-1"
+                            />
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
-        <div id="map"></div>
+
+        <div id="error-section" class="hidden text-center py-10">
+            <img src="img/data404.svg" class="w-32 mx-auto mb-4" />
+            <h3 class="text-xl mb-4">網頁掛掉了ヽ(ﾟД ﾟ; )ﾉ</h3>
+            <p class="mb-4">可改去下面兩個網站試試看</p>
+            <div class="flex flex-col space-y-2">
+                <a
+                    href="https://parkboss.tw/map/yilan-county"
+                    class="text-blue-600 underline text-lg"
+                    >停車我最大</a
+                >
+                <a
+                    href="https://tp.e-land.gov.tw/ATIS?Parking=ShowParkingTab"
+                    class="text-blue-600 underline text-lg"
+                    >宜蘭縣交通資訊</a
+                >
+            </div>
+        </div>
+
+        <div id="map-container" class="rounded-lg shadow-inner overflow-hidden">
+            <div id="map"></div>
+        </div>
+
         <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-        <script src="script.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+        <script src="config.js"></script>
+        <script src="map.js"></script>
+        <script src="main.js"></script>
     </body>
 </html>
