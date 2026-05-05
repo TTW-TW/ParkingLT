@@ -1,15 +1,30 @@
-body {
-    background-color: #c8e6c9;
-    font-family: "Microsoft JhengHei", sans-serif;
+/* style.css */
+
+/* 1. 定義自定義字體 */
+@font-face {
+    font-family: "Iansui-Regular";
+    src: url("fonts/Iansui-Regular.ttf") format("truetype");
+    font-display: swap; /* 讓文字在字體載入前先顯示，避免空白 */
 }
+
+/* 2. 套用到全站 */
+body {
+    background-color: #c8e6c9; /* 保持原有的背景色 */
+    /* 優先序：楑水體 -> Noto Sans TC -> 微軟正黑體 (安全字體) -> 系統預設黑體 */
+    font-family:
+        "Iansui-Regular", "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+}
+
 #map {
     height: 350px;
     width: 100%;
     border: 1px solid #455a64;
 }
+
 #greeting-section {
     background-color: rgb(138, 217, 225);
 }
+
 .active-site {
     background-color: #18541c !important;
     color: white;
