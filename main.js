@@ -23,17 +23,20 @@ function updateGreeting() {
 const isLocalTest = false;
 
 async function fetchData() {
+    let apiUrl = "https://steep-bush-ea3a.forestsound520.workers.dev";
+
     try {
         let response;
         if (isLocalTest) {
-            // 在本地測試時，使用 fetch 讀取專案目錄下的 yl_government.json
-            // 注意：這仍需在 Live Server 環境下運行
+            // 在本地測試時，使用 fetch 讀取專案目錄下的 yl_government.json [cite: 11]
+            // 注意：這仍需在 Live Server 環境下運行 [cite: 31, 32]
             const localRes = await fetch("data/yl_government.json");
             apiData = await localRes.json();
             console.log("正在使用【本地測試資料】渲染網頁");
         } else {
-            // 正式環境使用 Axios 打真實 API
-            response = await axios.get(config.apiUrl);
+            // 正式環境使用 Axios 打真實 API (使用上面判斷後的 apiUrl) [cite: 11]
+            // 我們將 config.apiUrl 替換為動態判斷後的 apiUrl [cite: 21, 23]
+            response = await axios.get(apiUrl);
             apiData = response.data;
             console.log("正在讀取【宜蘭縣政府即時 API】");
         }
