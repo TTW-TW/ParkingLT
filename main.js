@@ -13,14 +13,15 @@ function updateGreeting() {
 
     document.getElementById("greeting-text").innerText =
         config.greetingText[timeKey];
-    document.getElementById("greeting-img").src = `img/greeting_${timeKey}.svg`;
+    document.getElementById("greeting-img").src =
+        `img/greeting_${timeKey}.webp`;
 }
 
 // 2. 抓取 API 資料 (宜蘭縣主要來源) [cite: 29, 30]
 // main.js
 
 // [開發建議]：手動切換此布林值，如果是 true 則讀取本地 json 檔案
-const isLocalTest = false;
+const isLocalTest = true;
 
 async function fetchData() {
     let apiUrl = "https://steep-bush-ea3a.forestsound520.workers.dev";
@@ -53,7 +54,7 @@ async function fetchData() {
     }
 }
 
-function renderInfo() {
+function renderInfo(shouldFly = true) {
     const site = config.favorateParking[currentSiteIdx];
     const parkingName = site.parkingZhName[currentParkingIdx];
     const parkingId = site.parkingApi1ID[currentParkingIdx];
@@ -105,7 +106,7 @@ function renderInfo() {
         );
     }
 
-    updateMapMarkers(currentSiteIdx, currentParkingIdx);
+    updateMapMarkers(currentSiteIdx, currentParkingIdx, shouldFly);
 }
 
 // 切換地點
@@ -117,12 +118,13 @@ function switchSite(idx) {
 }
 
 // 切換停車場 (左右按鈕)
-window.switchParking = (idx) => {
+window.switchParking = (idx, shouldFly = false) => {
     const site = config.favorateParking[currentSiteIdx];
     if (idx < 0) currentParkingIdx = site.parkingZhName.length - 1;
     else if (idx >= site.parkingZhName.length) currentParkingIdx = 0;
     else currentParkingIdx = idx;
-    renderInfo();
+
+    renderInfo(shouldFly); // 左右切換通常不需要飛越地圖
 };
 
 // UI 切換邏輯
@@ -133,8 +135,16 @@ function showErrorUI() {
 }
 
 function showNormalUI() {
-    document.getElementById("parking-info-section").classList.remove("hidden");
-    document.getElementById("map-container").classList.remove("hidden");
+    document.getElementById("loading-section").classList.add("hidden"); // 隱藏載入區
+    document.getElementById("main-content").classList.remove("hidden"); // 顯示主內容
+
+    // 重要：地圖從隱藏變顯示後，必須重新計算尺寸，否則會出現圖磚消失的 Bug
+    if (map) {
+        setTimeout(() => {
+            map.invalidateSize();
+        }, 100);
+    }
+
     document.getElementById("error-section").classList.add("hidden");
 }
 

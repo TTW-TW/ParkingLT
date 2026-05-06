@@ -1,0 +1,32 @@
+from PIL import Image
+import os
+
+def convert_png_to_webp(input_path, output_path, quality=90):
+    """
+    將 PNG 轉換為 WebP 並保留透明背景
+    :param input_path: PNG 圖片路徑
+    :param output_path: 輸出的 WebP 圖片路徑
+    :param quality: 壓縮品質 (0-100)
+    """
+    try:
+        # 打開 PNG 圖片
+        img = Image.open(input_path)
+        
+        # 將圖片轉換為 RGBA 模式以確保包含透明通道 (Alpha)
+        if img.mode != 'RGBA':
+            img = img.convert('RGBA')
+            
+        # 保存為 WebP，quality 為 100 表示無損壓縮
+        img.save(output_path, 'WEBP', quality=quality)
+        print(f"成功轉換: {output_path}")
+        
+    except Exception as e:
+        print(f"轉換失敗 {input_path}: {e}")
+
+# 使用範例
+if __name__ == "__main__":
+    # 單個檔案轉換
+    convert_png_to_webp(r"D:\Hex\SideProject\ParkingLT\img\loading.png", r"D:\Hex\SideProject\ParkingLT\img\loading.webp")
+
+
+print("ok")
