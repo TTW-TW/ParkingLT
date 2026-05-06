@@ -25,6 +25,12 @@ body {
     background-color: rgb(138, 217, 225);
 }
 
+/* 問候圖片預設隱藏，避免破圖感 */
+#greeting-img {
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out; /* 圖片載入後優雅淡入 */
+}
+
 .active-site {
     background-color: #18541c !important;
     color: white;

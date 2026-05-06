@@ -16,6 +16,8 @@
 - 剩餘車位 api (Get) = "/v1/Parking/OffStreet/ParkingAvailability/City/{City}"
     - "https://tdx.transportdata.tw/api/basic/v1/Parking/OffStreet/ParkingAvailability/City/YilanCounty?%24top=100&%24format=JSON"
 - api規格頁面："https://tdx.transportdata.tw/api-service/swagger/basic/945f57da-f29d-4dfd-94ec-c35d9f62be7d#/CityCarParky"
+- 在 `ParkingAvailabilities` 欄位中需要的資訊：指定的`CarParkID` (停車場id) 中的 `TotalSpaces` (總停車位數) 和 `AvailableSpaces` 剩餘停車位數
+- 我需要的 `CarParkID`：[240, 84, 228, 31, 35, 219, 34, 81, 214, 33, 263 ]
 
 ## 【常用地點】及所需停車場
 
@@ -107,3 +109,169 @@
     - 找到我所有目標 "parkingApi1ID" 所對應的 "ID"
     - 裡面的 X 和 Y 就是所需點位，請把它存下來做為之後的定位點
     - 看你要擴充在 `config.favorateParking` 或是另外存一個參數都可以
+
+- apiBase = "https://tdx.transportdata.tw/api/basic"
+- 剩餘車位 api (Get) = "/v1/Parking/OffStreet/ParkingAvailability/City/{City}"
+    - "https://tdx.transportdata.tw/api/basic/v1/Parking/OffStreet/ParkingAvailability/City/YilanCounty?%24top=100&%24format=JSON"
+- api規格頁面："https://tdx.transportdata.tw/api-service/swagger/basic/945f57da-f29d-4dfd-94ec-c35d9f62be7d#/CityCarParky"
+- 在 `ParkingAvailabilities` 欄位中需要的資訊：指定的`CarParkID` (停車場id) 中的 `TotalSpaces` (總停車位數) 和 `AvailableSpaces` 剩餘停車位數
+- 我需要的 `CarParkID`：[240, 84, 228, 31, 35, 219, 34, 81, 214, 33, 263 ]
+- 我需要的 `CarParkName.Zh_tw`: [
+  "Times新羅東轉運站",
+  "TIMES羅東光榮路停車場",
+  "博客停車場-羅東光榮場",
+  "羅東公正地下停車場",
+  "公正平面停車場",
+  "TIMES羅東站東路第4停車場",
+  "羅東停三停車場",
+  "TIMES羅東車站前停車場",
+  "羅東陽明路停車場",
+  "羅東停一停車場",
+  "TIMES羅東站前路停車場"
+  ]
+
+```html
+<tbody>
+    <tr data-param-name="City" data-param-in="path">
+        <td class="parameters-col_name">
+            <div class="parameter__name required">City<span>&nbsp;*</span></div>
+            <div class="parameter__type">string</div>
+            <div class="parameter__deprecated"></div>
+            <div class="parameter__in">(path)</div>
+        </td>
+        <td class="parameters-col_description">
+            <select class="">
+                <option value="Taipei">Taipei</option>
+                <option value="Taoyuan">Taoyuan</option>
+                <option value="Taichung">Taichung</option>
+                <option value="Tainan">Tainan</option>
+                <option value="Kaohsiung">Kaohsiung</option>
+                <option value="Keelung">Keelung</option>
+                <option value="ChanghuaCounty">ChanghuaCounty</option>
+                <option value="YunlinCounty">YunlinCounty</option>
+                <option value="PingtungCounty">PingtungCounty</option>
+                <option value="YilanCounty">YilanCounty</option>
+                <option value="HualienCounty">HualienCounty</option>
+                <option value="KinmenCounty">KinmenCounty</option>
+            </select>
+        </td>
+    </tr>
+    <tr data-param-name="$select" data-param-in="query">
+        <td class="parameters-col_name">
+            <div class="parameter__name">$select</div>
+            <div class="parameter__type">string</div>
+            <div class="parameter__deprecated"></div>
+            <div class="parameter__in">(query)</div>
+        </td>
+        <td class="parameters-col_description">
+            <div class="renderedMarkdown"><p>挑選</p></div>
+            <input
+                type="text"
+                class=""
+                title=""
+                placeholder="$select"
+                value=""
+            />
+        </td>
+    </tr>
+    <tr data-param-name="$filter" data-param-in="query">
+        <td class="parameters-col_name">
+            <div class="parameter__name">$filter</div>
+            <div class="parameter__type">string</div>
+            <div class="parameter__deprecated"></div>
+            <div class="parameter__in">(query)</div>
+        </td>
+        <td class="parameters-col_description">
+            <div class="renderedMarkdown"><p>過濾</p></div>
+            <input
+                type="text"
+                class=""
+                title=""
+                placeholder="$filter"
+                value=""
+            />
+        </td>
+    </tr>
+    <tr data-param-name="$orderby" data-param-in="query">
+        <td class="parameters-col_name">
+            <div class="parameter__name">$orderby</div>
+            <div class="parameter__type">string</div>
+            <div class="parameter__deprecated"></div>
+            <div class="parameter__in">(query)</div>
+        </td>
+        <td class="parameters-col_description">
+            <div class="renderedMarkdown"><p>排序</p></div>
+            <input
+                type="text"
+                class=""
+                title=""
+                placeholder="$orderby"
+                value=""
+            />
+        </td>
+    </tr>
+    <tr data-param-name="$top" data-param-in="query">
+        <td class="parameters-col_name">
+            <div class="parameter__name">$top</div>
+            <div class="parameter__type">integer</div>
+            <div class="parameter__deprecated"></div>
+            <div class="parameter__in">(query)</div>
+        </td>
+        <td class="parameters-col_description">
+            <div class="renderedMarkdown"><p>取前幾筆</p></div>
+            <input
+                type="text"
+                class=""
+                title=""
+                placeholder="$top"
+                value="30"
+            />
+        </td>
+    </tr>
+    <tr data-param-name="$skip" data-param-in="query">
+        <td class="parameters-col_name">
+            <div class="parameter__name">$skip</div>
+            <div class="parameter__type">string</div>
+            <div class="parameter__deprecated"></div>
+            <div class="parameter__in">(query)</div>
+        </td>
+        <td class="parameters-col_description">
+            <div class="renderedMarkdown"><p>跳過前幾筆</p></div>
+            <input type="text" class="" title="" placeholder="$skip" value="" />
+        </td>
+    </tr>
+    <tr data-param-name="$count" data-param-in="query">
+        <td class="parameters-col_name">
+            <div class="parameter__name">$count</div>
+            <div class="parameter__type">boolean</div>
+            <div class="parameter__deprecated"></div>
+            <div class="parameter__in">(query)</div>
+        </td>
+        <td class="parameters-col_description">
+            <div class="renderedMarkdown"><p>查詢數量</p></div>
+            <select class="">
+                <option value="">--</option>
+                <option value="true">true</option>
+                <option value="false">false</option>
+            </select>
+        </td>
+    </tr>
+    <tr data-param-name="$format" data-param-in="query">
+        <td class="parameters-col_name">
+            <div class="parameter__name required">
+                $format<span>&nbsp;*</span>
+            </div>
+            <div class="parameter__type">string</div>
+            <div class="parameter__deprecated"></div>
+            <div class="parameter__in">(query)</div>
+        </td>
+        <td class="parameters-col_description">
+            <div class="renderedMarkdown"><p>指定來源格式</p></div>
+            <select class="">
+                <option value="JSON">JSON</option>
+                <option value="XML">XML</option>
+            </select>
+        </td>
+    </tr>
+</tbody>
+```

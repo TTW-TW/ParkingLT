@@ -11,10 +11,23 @@ function updateGreeting() {
     else if (hour >= 11 && hour < 13) timeKey = "noon";
     else if (hour >= 13 && hour < 18) timeKey = "afternoon";
 
-    document.getElementById("greeting-text").innerText =
-        config.greetingText[timeKey];
-    document.getElementById("greeting-img").src =
-        `img/greeting_${timeKey}.webp`;
+    const greetingTextEl = document.getElementById("greeting-text");
+    const greetingImgEl = document.getElementById("greeting-img");
+
+    // 立即更新文字，縮短等待感
+    greetingTextEl.innerText = config.greetingText[timeKey];
+
+    // 預載機制：先在記憶體中建立圖片物件下載
+    const imgPath = `img/greeting_${timeKey}.webp`;
+    const preloader = new Image();
+
+    preloader.onload = () => {
+        // 確定圖片下載完成後，才設定 src 並調整透明度現身
+        greetingImgEl.src = imgPath;
+        greetingImgEl.style.opacity = "1";
+    };
+
+    preloader.src = imgPath;
 }
 
 // 2. 抓取 API 資料 (宜蘭縣主要來源) [cite: 29, 30]
@@ -41,8 +54,19 @@ async function fetchData() {
         }
 
         // 更新 UI 上的更新時間
-        document.getElementById("update-time").innerText =
-            new Date().toLocaleTimeString();
+        const now = new Date();
+        const options = {
+            month: "2-digit", // 顯示月份 (如 05)
+            day: "2-digit", // 顯示日期 (如 07)
+            hour: "2-digit", // 顯示小時 (如 01)
+            minute: "2-digit", // 顯示分鐘
+            second: "2-digit", // 顯示秒
+            hour12: false, // 使用 24 小時制
+            timeZone: "Asia/Taipei", // 確保時區正確
+        };
+
+        const formattedDate = now.toLocaleString("zh-TW", options);
+        document.getElementById("update-time").innerText = formattedDate;
 
         showNormalUI();
         renderInfo();
