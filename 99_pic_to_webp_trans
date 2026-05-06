@@ -26,7 +26,7 @@ def convert_png_to_webp(input_path, output_path, quality=90):
 # 使用範例
 if __name__ == "__main__":
     # 單個檔案轉換
-    convert_png_to_webp(r"D:\Hex\SideProject\ParkingLT\img\loading.png", r"D:\Hex\SideProject\ParkingLT\img\loading.webp")
+    convert_png_to_webp(r"D:\Hex\SideProject\ParkingLT\img\old\greeting_night.png", r"D:\Hex\SideProject\ParkingLT\img\greeting_noon.webp")
 
 
 print("ok")

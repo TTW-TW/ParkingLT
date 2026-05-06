@@ -16,9 +16,9 @@ body {
 }
 
 #map {
-    height: 350px;
+    height: 320px;
     width: 100%;
-    border: 1px solid #455a64;
+    border: 1px solid #4e5f67;
 }
 
 #greeting-section {
