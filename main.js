@@ -33,13 +33,11 @@ async function fetchData() {
             // 注意：這仍需在 Live Server 環境下運行 [cite: 31, 32]
             const localRes = await fetch("data/yl_government.json");
             apiData = await localRes.json();
-            console.log("正在使用【本地測試資料】渲染網頁");
         } else {
             // 正式環境使用 Axios 打真實 API (使用上面判斷後的 apiUrl) [cite: 11]
             // 我們將 config.apiUrl 替換為動態判斷後的 apiUrl [cite: 21, 23]
             response = await axios.get(apiUrl);
             apiData = response.data;
-            console.log("正在讀取【宜蘭縣政府即時 API】");
         }
 
         // 更新 UI 上的更新時間
@@ -206,7 +204,7 @@ function renderSiteButtons() {
     container.innerHTML = config.favorateParking
         .map(
             (site, i) => `
-        <button onclick="switchSite(${i})" class="py-2 border-r border-gray-600 last:border-0 ${i === currentSiteIdx ? "active-site" : "bg-white"}">
+        <button onclick="switchSite(${i})" class="py-3 border-r border-gray-600 last:border-0 ${i === currentSiteIdx ? "active-site" : "bg-white"}">
             ${site.siteName}
         </button>
     `,
