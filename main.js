@@ -21,7 +21,7 @@ function updateGreeting() {
 // main.js
 
 // [開發建議]：手動切換此布林值，如果是 true 則讀取本地 json 檔案
-const isLocalTest = true;
+const isLocalTest = False;
 
 async function fetchData() {
     let apiUrl = "https://steep-bush-ea3a.forestsound520.workers.dev";
