@@ -68,7 +68,22 @@ refreshBtn.addEventListener("click", async () => {
             // 情況 1：成功
             updateStatusEl.innerText = "已更新";
             updateStatusEl.className = "font-bold ml-1 status-success";
-            updateTimeEl.innerText = new Date().toLocaleTimeString(); // 更新時間
+
+            const now = new Date();
+            const month = String(now.getMonth() + 1).padStart(2, "0");
+            const date = String(now.getDate()).padStart(2, "0");
+            const weekDays = ["日", "一", "二", "三", "四", "五", "六"];
+            const dayOfWeek = weekDays[now.getDay()]; // 取得星期幾
+            const timeStr = now.toLocaleTimeString("zh-TW", {
+                hour12: false,
+                hour: "2-digit",
+                minute: "2-digit",
+                second: "2-digit",
+            });
+
+            // 組合成：05/07 (四) 20:21:03
+            const formattedDate = `${month}/${date} (${dayOfWeek}) ${timeStr}`;
+            updateTimeEl.innerText = formattedDate; // 更新時間
         } else {
             // 情況 2：API 返還錯誤 (但沒斷線)
             throw new Error("Fetch failed");
