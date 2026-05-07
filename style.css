@@ -95,8 +95,8 @@ body {
 
 #parking-address {
     width: 200px; /* 固定寬度，可依需求調整 */
-    min-height: 2.4rem; /* 預設約兩行高度 */
-    line-height: 1.2;
+    min-height: 2.8rem; /* 預設約兩行高度 */
+    line-height: 1.4;
     display: -webkit-box;
     -webkit-line-clamp: 2; /* 限制最多顯示兩行 */
     -webkit-box-orient: vertical;

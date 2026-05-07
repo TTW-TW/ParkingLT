@@ -59,11 +59,12 @@ refreshBtn.addEventListener("click", async () => {
     try {
         // 3. 執行資料抓取 (假設 fetchData 會回傳成功與否)
         // 注意：這裡使用你原本設定的 apiUrl 與 Axios/Fetch 邏輯
-        const success = await fetchData(controller.signal);
+        // 現在 fetchData 會回傳 true 或 false 了
+        const isSuccess = await fetchData(controller.signal);
 
         clearTimeout(timeoutId);
 
-        if (success) {
+        if (isSuccess) {
             // 情況 1：成功
             updateStatusEl.innerText = "已更新";
             updateStatusEl.className = "font-bold ml-1 status-success";
@@ -77,18 +78,17 @@ refreshBtn.addEventListener("click", async () => {
         updateStatusEl.innerText = "失敗";
         updateStatusEl.className = "font-bold ml-1 status-error";
         // 注意：不調用 showErrorUI()，讓使用者保留查看舊資料的權利
-        console.warn("更新失敗，保留前次載入資料");
     } finally {
         // 4. 三秒後消失狀態文字
         setTimeout(() => {
             updateStatusEl.innerText = "";
-        }, 6000);
+        }, 7000);
 
         // 5. 確保按鈕在 5 秒後恢復
         setTimeout(() => {
             refreshBtn.classList.remove("cooldown");
             refreshBtn.disabled = false;
-        }, 6000);
+        }, 7000);
     }
 });
 
