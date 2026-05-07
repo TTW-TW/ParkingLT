@@ -115,20 +115,27 @@ async function fetchData(signal) {
     if (apiUrl === "API_URL_PLACEHOLDER") {
         apiUrl = "https://steep-bush-ea3a.forestsound520.workers.dev";
     }
+    // 如果沒有傳入 signal，自己建立一個 10 秒的 AbortController
+    let controller;
+    let timeoutId;
+    if (!signal) {
+        controller = new AbortController();
+        signal = controller.signal;
+        timeoutId = setTimeout(() => controller.abort(), 10000);
+    }
 
     try {
         let response;
         if (isLocalTest) {
-            // 在本地測試時，使用 fetch 讀取專案目錄下的 yl_government.json [cite: 11]
-            // 注意：這仍需在 Live Server 環境下運行 [cite: 31, 32]
+            // 本地測試
             const localRes = await fetch("data/yl_government.json");
             apiData = await localRes.json();
         } else {
-            // 正式環境使用 Axios 打真實 API (使用上面判斷後的 apiUrl) [cite: 11]
-            // 我們將 config.apiUrl 替換為動態判斷後的 apiUrl [cite: 21, 23]
+            // 正式環境
             response = await axios.get(apiUrl, { signal, timeout: 10000 });
             apiData = response.data;
         }
+        if (timeoutId) clearTimeout(timeoutId);
 
         // 更新 UI 上的更新時間
         const now = new Date();
@@ -201,7 +208,11 @@ function renderInfo(shouldFly = true) {
             availableSlotsElement.innerText = "未提供";
             // 成功套用你要求的文字黃底結果
             availableSlotsElement.classList.remove("text-3xl");
-            container.classList.add("text-yellow-900", "bg-yellow-300");
+            container.classList.add(
+                "text-yellow-900",
+                "bg-yellow-300",
+                "text-xl",
+            );
         } else {
             availableSlotsElement.innerText = available;
 
@@ -270,7 +281,6 @@ function showNormalUI() {
 }
 
 // 監聽按鈕
-document.getElementById("refresh-btn").addEventListener("click", fetchData);
 document
     .getElementById("prev-parking")
     .addEventListener("click", () => switchParking(currentParkingIdx - 1));
@@ -279,11 +289,14 @@ document
     .addEventListener("click", () => switchParking(currentParkingIdx + 1));
 
 // 初始化
-window.onload = () => {
+window.onload = async () => {
     initMap();
     updateGreeting();
     renderSiteButtons();
-    fetchData();
+    const isSuccess = await fetchData(); // 加 await
+    if (!isSuccess) {
+        showErrorUI(); // 失敗就跳到大笨鳥
+    }
 };
 
 // main.js - 在檔案最下方加入這段

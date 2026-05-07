@@ -42,7 +42,7 @@
             id="loading-section"
             class="flex flex-col items-center justify-center py-4"
         >
-            <div class="text-l my-6">阿貓找車位中，請稍後...</div>
+            <div class="text-l my-6">阿貓努力找車位中，請稍後...</div>
             <img
                 src="img/loading.webp"
                 class="w-72 animate-float mt-5"
@@ -69,7 +69,7 @@
                 <!-- 刷新按鈕 -->
                 <button
                     id="refresh-btn"
-                    class="relative overflow-hidden bg-green-800 text-white px-4 py-3 rounded shadow-md text-sm transition-all active:scale-90"
+                    class="relative overflow-hidden bg-green-800 text-white px-4 py-3 my-1 rounded shadow-md text-sm transition-all active:scale-90"
                 >
                     <span
                         id="refresh-progress"
@@ -148,28 +148,28 @@
                 </div>
             </div>
 
-            <!-- 大笨鳥錯誤區 -->
-            <div id="error-section" class="hidden text-center py-10">
-                <img src="img/data404.svg" class="w-52 mx-auto mb-4" />
-                <h3 class="text-xl mb-4">網頁掛掉了ヽ(ﾟД ﾟ; )ﾉ</h3>
-                <p class="mb-4">可改去下面兩個網站試試看</p>
-                <div class="flex flex-col space-y-2">
-                    <a
-                        href="https://parkboss.tw/map/yilan-county"
-                        class="text-blue-600 underline text-lg"
-                        >停車我最大</a
-                    >
-                    <a
-                        href="https://tp.e-land.gov.tw/ATIS?Parking=ShowParkingTab"
-                        class="text-blue-600 underline text-lg"
-                        >宜蘭縣交通資訊</a
-                    >
-                </div>
-            </div>
-
             <!-- 5.地圖區 -->
             <div id="map-container" class="shadow-sm overflow-hidden">
                 <div id="map"></div>
+            </div>
+        </div>
+
+        <!-- 大笨鳥錯誤區 -->
+        <div id="error-section" class="hidden text-center py-6">
+            <img src="img/data404.svg" class="w-56 mx-auto mb-4" />
+            <h3 class="text-xl mb-4">網頁掛掉了 ヽ(ﾟД ﾟ; )ﾉ</h3>
+            <p class="text-md mb-4">可改去下面兩個網站試試看</p>
+            <div class="flex flex-col space-y-2">
+                <a
+                    href="https://parkboss.tw/map/yilan-county"
+                    class="text-blue-600 underline text-lg"
+                    >停車我最大</a
+                >
+                <a
+                    href="https://tp.e-land.gov.tw/ATIS?Parking=ShowParkingTab"
+                    class="text-blue-600 underline text-lg"
+                    >宜蘭縣交通資訊</a
+                >
             </div>
         </div>
 
