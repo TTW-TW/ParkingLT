@@ -113,7 +113,7 @@ async function fetchData(signal) {
 
     // 安全機制：如果在本地開發且沒被替換，則指向你的 Worker
     if (apiUrl === "API_URL_PLACEHOLDER") {
-        apiUrl = "https://steep-bush-ea3a.forestsound520.workers.dev";
+        apiUrl = "https://parking-space-lt.vigor-api-proxy.workers.dev/";
     }
     // 如果沒有傳入 signal，自己建立一個 10 秒的 AbortController
     let controller;
