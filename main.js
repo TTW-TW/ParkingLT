@@ -90,7 +90,7 @@ refreshBtn.addEventListener("click", async () => {
 });
 
 // [開發建議]：手動切換此布林值，如果是 true 則讀取本地 json 檔案
-const isLocalTest = true;
+const isLocalTest = false;
 
 async function fetchData(signal) {
     // 預留一個給 GitHub Actions 替換的標記字串
@@ -168,6 +168,7 @@ function renderInfo(shouldFly = true) {
     );
 
     availableSlotsElement.classList.add("text-3xl");
+
     if (liveInfo) {
         const available = liveInfo.AvailableCar;
         const total = liveInfo.TotalCar;
