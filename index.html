@@ -28,7 +28,7 @@
         <link rel="stylesheet" href="./style.css" />
     </head>
     <body class="p-4 max-w-md mx-auto">
-        <!-- 問候語 -->
+        <!-- 1.問候語 -->
         <div
             id="greeting-section"
             class="flex items-center mb-4 rounded-tl-[28px] rounded-br-[28px] shadow-[4px_4px_6px_0px_rgba(0,0,0,0.2)]"
@@ -42,10 +42,10 @@
             id="loading-section"
             class="flex flex-col items-center justify-center py-4"
         >
-            <div class="text-l mb-6">阿貓找車位中，請稍後...</div>
+            <div class="text-l my-6">阿貓找車位中，請稍後...</div>
             <img
                 src="img/loading.webp"
-                class="w-72 animate-float"
+                class="w-72 animate-float mt-5"
                 alt="Loading"
             />
         </div>
@@ -58,7 +58,7 @@
                 <!-- 資料更新時間 -->
                 <div class="flex items-center gap-1 text-sm text-gray-600">
                     <div class="text-sm">
-                        刷新時間：<span id="update-time">尚未更新</span>
+                        <span id="update-time">尚未</span> 更新
                     </div>
                     <span
                         id="update-status"
@@ -69,7 +69,7 @@
                 <!-- 刷新按鈕 -->
                 <button
                     id="refresh-btn"
-                    class="relative overflow-hidden bg-green-800 text-white px-4 py-2 rounded shadow-md text-sm transition-all active:scale-90"
+                    class="relative overflow-hidden bg-green-800 text-white px-3 py-3 rounded shadow-md text-sm transition-all active:scale-90"
                 >
                     <span
                         id="refresh-progress"

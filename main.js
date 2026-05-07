@@ -2,6 +2,9 @@ let currentSiteIdx = 0;
 let currentParkingIdx = 0;
 let apiData = [];
 
+// [開發測試]：手動切換此布林值，如果是 true 則讀取本地 json 檔案
+const isLocalTest = false;
+
 // 1. 初始化問候區 [cite: 6]
 function updateGreeting() {
     const hour = new Date().getHours();
@@ -62,7 +65,7 @@ refreshBtn.addEventListener("click", async () => {
 
         if (success) {
             // 情況 1：成功
-            updateStatusEl.innerText = "更新成功";
+            updateStatusEl.innerText = "已更新";
             updateStatusEl.className = "font-bold ml-1 status-success";
             updateTimeEl.innerText = new Date().toLocaleTimeString(); // 更新時間
         } else {
@@ -71,10 +74,10 @@ refreshBtn.addEventListener("click", async () => {
         }
     } catch (error) {
         // 情況 3：失敗或 10 秒超時
-        updateStatusEl.innerText = "更新失敗";
+        updateStatusEl.innerText = "失敗";
         updateStatusEl.className = "font-bold ml-1 status-error";
         // 注意：不調用 showErrorUI()，讓使用者保留查看舊資料的權利
-        console.warn("手動刷新失敗，保留舊有數據內容");
+        console.warn("更新失敗，保留前次載入資料");
     } finally {
         // 4. 三秒後消失狀態文字
         setTimeout(() => {
@@ -88,9 +91,6 @@ refreshBtn.addEventListener("click", async () => {
         }, 6000);
     }
 });
-
-// [開發建議]：手動切換此布林值，如果是 true 則讀取本地 json 檔案
-const isLocalTest = false;
 
 async function fetchData(signal) {
     // 預留一個給 GitHub Actions 替換的標記字串
@@ -111,30 +111,35 @@ async function fetchData(signal) {
         } else {
             // 正式環境使用 Axios 打真實 API (使用上面判斷後的 apiUrl) [cite: 11]
             // 我們將 config.apiUrl 替換為動態判斷後的 apiUrl [cite: 21, 23]
-            response = await axios.get(apiUrl, { timeout: 10000 });
+            response = await axios.get(apiUrl, { signal, timeout: 10000 });
             apiData = response.data;
         }
 
         // 更新 UI 上的更新時間
         const now = new Date();
-        const options = {
-            month: "2-digit", // 顯示月份 (如 05)
-            day: "2-digit", // 顯示日期 (如 07)
-            hour: "2-digit", // 顯示小時 (如 01)
-            minute: "2-digit", // 顯示分鐘
-            second: "2-digit", // 顯示秒
-            hour12: false, // 使用 24 小時制
-            timeZone: "Asia/Taipei", // 確保時區正確
-        };
+        const month = String(now.getMonth() + 1).padStart(2, "0");
+        const date = String(now.getDate()).padStart(2, "0");
+        const weekDays = ["日", "一", "二", "三", "四", "五", "六"];
+        const dayOfWeek = weekDays[now.getDay()]; // 取得星期幾
+        const timeStr = now.toLocaleTimeString("zh-TW", {
+            hour12: false,
+            hour: "2-digit",
+            minute: "2-digit",
+            second: "2-digit",
+        });
 
-        const formattedDate = now.toLocaleString("zh-TW", options);
+        // 組合成：05/07 (四) 20:21:03
+        const formattedDate = `${month}/${date} (${dayOfWeek}) ${timeStr}`;
         document.getElementById("update-time").innerText = formattedDate;
 
         showNormalUI();
         renderInfo();
+
+        return true; // 告訴點擊事件「真的成功了」
     } catch (error) {
         console.error("資料獲取失敗:", error);
-        showErrorUI();
+        if (error.name === "AbortError") console.warn("請求超時被取消");
+        return false;
     }
 }
 
