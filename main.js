@@ -54,7 +54,7 @@ refreshBtn.addEventListener("click", async () => {
 
     // 設定 10 秒超時機制 [cite: 58]
     const controller = new AbortController();
-    const timeoutId = setTimeout(() => controller.abort(), 10000);
+    const timeoutId = setTimeout(() => controller.abort(), 20000);
 
     try {
         // 3. 執行資料抓取 (假設 fetchData 會回傳成功與否)
@@ -97,13 +97,13 @@ refreshBtn.addEventListener("click", async () => {
         // 4. 三秒後消失狀態文字
         setTimeout(() => {
             updateStatusEl.innerText = "";
-        }, 7000);
+        }, 8000);
 
         // 5. 確保按鈕在 5 秒後恢復
         setTimeout(() => {
             refreshBtn.classList.remove("cooldown");
             refreshBtn.disabled = false;
-        }, 7000);
+        }, 8000);
     }
 });
 
@@ -121,7 +121,7 @@ async function fetchData(signal) {
     if (!signal) {
         controller = new AbortController();
         signal = controller.signal;
-        timeoutId = setTimeout(() => controller.abort(), 10000);
+        timeoutId = setTimeout(() => controller.abort(), 20000);
     }
 
     try {
@@ -132,7 +132,7 @@ async function fetchData(signal) {
             apiData = await localRes.json();
         } else {
             // 正式環境
-            response = await axios.get(apiUrl, { signal, timeout: 10000 });
+            response = await axios.get(apiUrl, { signal, timeout: 20000 });
             apiData = response.data;
         }
         if (timeoutId) clearTimeout(timeoutId);
