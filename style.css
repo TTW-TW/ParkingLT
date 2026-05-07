@@ -16,7 +16,7 @@ body {
 }
 
 #map {
-    height: 320px;
+    height: 300px;
     width: 100%;
     border: 1px solid #4e5f67;
 }
@@ -55,6 +55,37 @@ body {
     align-items: flex-start; /* 頂部對齊  */
     gap: 8px;
 }
+
+/* 按鈕冷卻狀態：變灰色 */
+#refresh-btn.cooldown {
+    background-color: #9ca3af; /* gray-400 */
+    cursor: not-allowed;
+}
+
+/* 執行進度條填充動畫 (5秒) */
+#refresh-btn.cooldown #refresh-progress {
+    animation: fillBar 6s linear forwards;
+}
+
+@keyframes fillBar {
+    from {
+        width: 0%;
+    }
+    to {
+        width: 100%;
+    }
+}
+
+/* 狀態文字顏色 */
+.status-updating {
+    color: #2563eb;
+} /* 藍色 */
+.status-success {
+    color: #16a34a;
+} /* 綠色 */
+.status-error {
+    color: #dc2626;
+} /* 紅色 */
 
 /* 地址區塊佈局調整 */
 #address-container {

@@ -31,13 +31,75 @@ function updateGreeting() {
 }
 
 // 2. 抓取 API 資料 (宜蘭縣主要來源) [cite: 29, 30]
-// main.js
+
+// 典籍【刷新按鈕】的冷卻效果 + 資料更新狀態
+
+const refreshBtn = document.getElementById("refresh-btn");
+const updateTimeEl = document.getElementById("update-time");
+const updateStatusEl = document.getElementById("update-status");
+
+refreshBtn.addEventListener("click", async () => {
+    // 1. 防止重複點擊
+    if (refreshBtn.classList.contains("cooldown")) return;
+
+    // 2. 初始化 UI 狀態
+    refreshBtn.classList.add("cooldown");
+    refreshBtn.disabled = true;
+
+    updateStatusEl.innerText = "更新中";
+    updateStatusEl.className = "font-bold ml-1 status-updating";
+
+    // 設定 10 秒超時機制 [cite: 58]
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 10000);
+
+    try {
+        // 3. 執行資料抓取 (假設 fetchData 會回傳成功與否)
+        // 注意：這裡使用你原本設定的 apiUrl 與 Axios/Fetch 邏輯
+        const success = await fetchData(controller.signal);
+
+        clearTimeout(timeoutId);
+
+        if (success) {
+            // 情況 1：成功
+            updateStatusEl.innerText = "更新成功";
+            updateStatusEl.className = "font-bold ml-1 status-success";
+            updateTimeEl.innerText = new Date().toLocaleTimeString(); // 更新時間
+        } else {
+            // 情況 2：API 返還錯誤 (但沒斷線)
+            throw new Error("Fetch failed");
+        }
+    } catch (error) {
+        // 情況 3：失敗或 10 秒超時
+        updateStatusEl.innerText = "更新失敗";
+        updateStatusEl.className = "font-bold ml-1 status-error";
+        // 注意：不調用 showErrorUI()，讓使用者保留查看舊資料的權利
+        console.warn("手動刷新失敗，保留舊有數據內容");
+    } finally {
+        // 4. 三秒後消失狀態文字
+        setTimeout(() => {
+            updateStatusEl.innerText = "";
+        }, 6000);
+
+        // 5. 確保按鈕在 5 秒後恢復
+        setTimeout(() => {
+            refreshBtn.classList.remove("cooldown");
+            refreshBtn.disabled = false;
+        }, 6000);
+    }
+});
 
 // [開發建議]：手動切換此布林值，如果是 true 則讀取本地 json 檔案
-const isLocalTest = false;
+const isLocalTest = true;
 
-async function fetchData() {
-    let apiUrl = "https://steep-bush-ea3a.forestsound520.workers.dev";
+async function fetchData(signal) {
+    // 預留一個給 GitHub Actions 替換的標記字串
+    let apiUrl = "API_URL_PLACEHOLDER";
+
+    // 安全機制：如果在本地開發且沒被替換，則指向你的 Worker
+    if (apiUrl === "API_URL_PLACEHOLDER") {
+        apiUrl = "https://steep-bush-ea3a.forestsound520.workers.dev";
+    }
 
     try {
         let response;
@@ -49,7 +111,7 @@ async function fetchData() {
         } else {
             // 正式環境使用 Axios 打真實 API (使用上面判斷後的 apiUrl) [cite: 11]
             // 我們將 config.apiUrl 替換為動態判斷後的 apiUrl [cite: 21, 23]
-            response = await axios.get(apiUrl);
+            response = await axios.get(apiUrl, { timeout: 10000 });
             apiData = response.data;
         }
 
@@ -83,12 +145,11 @@ function renderInfo(shouldFly = true) {
 
     // 尋找 API 中的對應資料
     const liveInfo = apiData.find((item) => item.ID === parkingId);
+    const availableSlotsElement = document.getElementById("available-slots");
+    const totalSlotsElement = document.getElementById("total-slots");
     const container = document.getElementById("slots-color-container");
 
     document.getElementById("parking-name").innerText = parkingName;
-    document.getElementById("available-slots").innerText = liveInfo
-        ? liveInfo.AvailableCar
-        : "--"; // AvailableCar [cite: 29]
     document.getElementById("total-slots").innerText = liveInfo
         ? liveInfo.TotalCar
         : "--"; // TotalCar [cite: 29]
@@ -97,35 +158,48 @@ function renderInfo(shouldFly = true) {
     document.getElementById("google-nav").href =
         site.parkingGoogleMap[currentParkingIdx];
 
-    if (liveInfo && liveInfo.TotalCar > 0) {
+    // 初始化 UI 狀態
+    container.classList.remove(
+        "text-green-600",
+        "text-yellow-700",
+        "text-red-700",
+        "text-yellow-900",
+        "bg-yellow-300",
+    );
+
+    availableSlotsElement.classList.add("text-3xl");
+    if (liveInfo) {
         const available = liveInfo.AvailableCar;
         const total = liveInfo.TotalCar;
-        const ratio = available / total; // 計算比例
 
-        document.getElementById("available-slots").innerText = available;
-        document.getElementById("total-slots").innerText = total;
+        // 1. 處理總車位顯示
+        totalSlotsElement.innerText = total > 0 ? total : "--";
 
-        // 剩餘車位顏色計算邏輯 [cite: 3]
-        container.classList.remove(
-            "text-green-600",
-            "text-yellow-700",
-            "text-red-700",
-        );
-        if (ratio > 0.5) {
-            container.classList.add("text-green-600");
-        } else if (ratio >= 0.2) {
-            container.classList.add("text-yellow-700");
+        // 2. 處理剩餘車位文字：判斷是否為 -1
+        if (available === -1 || available === "-1") {
+            availableSlotsElement.innerText = "未提供";
+            // 成功套用你要求的文字黃底結果
+            availableSlotsElement.classList.remove("text-3xl");
+            container.classList.add("text-yellow-900", "bg-yellow-300");
         } else {
-            container.classList.add("text-red-700");
+            availableSlotsElement.innerText = available;
+
+            // 3. 處理顏色邏輯 (僅在數值正常且有總車位時計算)
+            if (total > 0) {
+                const ratio = available / total;
+                if (ratio > 0.5) {
+                    container.classList.add("text-green-600");
+                } else if (ratio >= 0.2) {
+                    container.classList.add("text-yellow-700");
+                } else {
+                    container.classList.add("text-red-700");
+                }
+            }
         }
     } else {
-        document.getElementById("available-slots").innerText = "--";
-        document.getElementById("total-slots").innerText = "--";
-        container.classList.remove(
-            "text-green-600",
-            "text-yellow-700",
-            "text-red-700",
-        );
+        // 完全沒資料的情況
+        availableSlotsElement.innerText = "--";
+        totalSlotsElement.innerText = "--";
     }
 
     updateMapMarkers(currentSiteIdx, currentParkingIdx, shouldFly);
@@ -151,13 +225,17 @@ window.switchParking = (idx, shouldFly = false) => {
 
 // UI 切換邏輯
 function showErrorUI() {
-    document.getElementById("parking-info-section").classList.add("hidden");
-    document.getElementById("map-container").classList.add("hidden");
+    // 關鍵！必須強制隱藏載入區，否則大笨鳥會被蓋住
+    document.getElementById("loading-section").classList.add("hidden");
+    document.getElementById("main-content").classList.add("hidden");
+
+    // 顯示錯誤區
     document.getElementById("error-section").classList.remove("hidden");
 }
 
 function showNormalUI() {
     document.getElementById("loading-section").classList.add("hidden"); // 隱藏載入區
+    document.getElementById("error-section").classList.add("hidden"); // 隱藏錯誤區
     document.getElementById("main-content").classList.remove("hidden"); // 顯示主內容
 
     // 重要：地圖從隱藏變顯示後，必須重新計算尺寸，否則會出現圖磚消失的 Bug
