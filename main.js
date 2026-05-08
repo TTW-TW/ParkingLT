@@ -262,6 +262,67 @@ async function requestApiSource(source, outerSignal) {
     }
 }
 
+//  helper function
+async function requestApiSource(source, outerSignal) {
+    const sourceController = new AbortController();
+    let isSourceTimeout = false;
+
+    // 單一來源的 timeout 控制：
+    // Cloudflare 最多等 8.5 秒
+    // Google Cloud Run 最多等 9.5 秒
+    const sourceTimeoutId = setTimeout(() => {
+        isSourceTimeout = true;
+        sourceController.abort();
+    }, source.timeout);
+
+    // 如果外層 20 秒總 timeout 被觸發，也要一起取消目前這次請求
+    const abortFromOuterSignal = () => {
+        sourceController.abort();
+    };
+
+    if (outerSignal) {
+        if (outerSignal.aborted) {
+            sourceController.abort();
+        } else {
+            outerSignal.addEventListener("abort", abortFromOuterSignal, {
+                once: true,
+            });
+        }
+    }
+
+    try {
+        const response = await axios.get(source.url, {
+            signal: sourceController.signal,
+            timeout: source.timeout,
+        });
+
+        // 確認回來的是停車資料陣列，不接受錯誤物件或異常格式
+        if (!Array.isArray(response.data)) {
+            throw new Error(`${source.name} 回傳資料格式不正確`);
+        }
+
+        return response.data;
+    } catch (error) {
+        if (isSourceTimeout) {
+            throw new Error(`${source.name} 超過 ${source.timeout}ms 未回應`);
+        }
+
+        if (error.response) {
+            throw new Error(
+                `${source.name} 回傳 HTTP ${error.response.status}`,
+            );
+        }
+
+        throw error;
+    } finally {
+        clearTimeout(sourceTimeoutId);
+
+        if (outerSignal) {
+            outerSignal.removeEventListener("abort", abortFromOuterSignal);
+        }
+    }
+}
+
 function renderInfo(shouldFly = true) {
     const site = config.favorateParking[currentSiteIdx];
     const parkingName = site.parkingZhName[currentParkingIdx];
