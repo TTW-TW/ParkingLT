@@ -108,9 +108,7 @@ refreshBtn.addEventListener("click", async () => {
 });
 
 async function fetchData(signal) {
-    
     let apiUrl = "https://parking-space-lt.vigor-api-proxy.workers.dev/";
-    }
 
     // 第二來源：Google Cloud Run 台灣區代理
     const googleCloudRunUrl =
@@ -124,13 +122,13 @@ async function fetchData(signal) {
             name: "Cloudflare Worker",
             url: apiUrl,
             timeout: 9000,
-            nickname: "cw"
+            nickname: "cw",
         },
         {
             name: "Google Cloud Run",
             url: googleCloudRunUrl,
             timeout: 16000,
-            nickname: "gc"
+            nickname: "gc",
         },
     ];
 
