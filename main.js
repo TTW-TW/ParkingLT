@@ -108,33 +108,71 @@ refreshBtn.addEventListener("click", async () => {
 });
 
 async function fetchData(signal) {
-    // 預留一個給 GitHub Actions 替換的標記字串
-    let apiUrl = "API_URL_PLACEHOLDER";
-
-    // 安全機制：如果在本地開發且沒被替換，則指向你的 Worker
-    if (apiUrl === "API_URL_PLACEHOLDER") {
-        apiUrl = "https://parking-space-lt.vigor-api-proxy.workers.dev/";
+    
+    let apiUrl = "https://parking-space-lt.vigor-api-proxy.workers.dev/";
     }
+
+    // 第二來源：Google Cloud Run 台灣區代理
+    const googleCloudRunUrl =
+        "https://yilan-parking-proxy-234889249421.asia-east1.run.app/";
+
+    // API 來源優先順序：
+    // 1. 優先打 Cloudflare Worker，因為成本較低
+    // 2. Cloudflare 失敗、522、timeout 或取不到資料時，才改打 Google Cloud Run
+    const apiSources = [
+        {
+            name: "Cloudflare Worker",
+            url: apiUrl,
+            timeout: 9000,
+            nickname: "cw"
+        },
+        {
+            name: "Google Cloud Run",
+            url: googleCloudRunUrl,
+            timeout: 16000,
+            nickname: "gc"
+        },
+    ];
+
     // 如果沒有傳入 signal，自己建立一個 10 秒的 AbortController
     let controller;
     let timeoutId;
     if (!signal) {
         controller = new AbortController();
         signal = controller.signal;
-        timeoutId = setTimeout(() => controller.abort(), 20000);
+        timeoutId = setTimeout(() => controller.abort(), 25000);
     }
 
     try {
-        let response;
         if (isLocalTest) {
             // 本地測試
             const localRes = await fetch("data/yl_government.json");
             apiData = await localRes.json();
         } else {
             // 正式環境
-            response = await axios.get(apiUrl, { signal, timeout: 20000 });
-            apiData = response.data;
+            // 依序嘗試 API 來源：先 Cloudflare，再 Google Cloud Run
+            let lastError;
+
+            for (const source of apiSources) {
+                try {
+                    console.log(`try ${source.nickname}`);
+
+                    apiData = await requestApiSource(source, signal);
+
+                    console.log(`${source.nickname} success`);
+                    break;
+                } catch (error) {
+                    lastError = error;
+                    console.warn(`${source.nickname} fail:`, error.message);
+                }
+            }
+
+            // 兩個來源都失敗時，才讓 fetchData 回傳 false
+            if (!apiData || !Array.isArray(apiData)) {
+                throw lastError || new Error("all source fail");
+            }
         }
+
         if (timeoutId) clearTimeout(timeoutId);
 
         // 更新 UI 上的更新時間
@@ -162,6 +200,67 @@ async function fetchData(signal) {
         console.error("資料獲取失敗:", error);
         if (error.name === "AbortError") console.warn("請求超時被取消");
         return false;
+    }
+}
+
+//  helper function
+async function requestApiSource(source, outerSignal) {
+    const sourceController = new AbortController();
+    let isSourceTimeout = false;
+
+    // 單一來源的 timeout 控制：
+    // Cloudflare 最多等 8.5 秒
+    // Google Cloud Run 最多等 9.5 秒
+    const sourceTimeoutId = setTimeout(() => {
+        isSourceTimeout = true;
+        sourceController.abort();
+    }, source.timeout);
+
+    // 如果外層 20 秒總 timeout 被觸發，也要一起取消目前這次請求
+    const abortFromOuterSignal = () => {
+        sourceController.abort();
+    };
+
+    if (outerSignal) {
+        if (outerSignal.aborted) {
+            sourceController.abort();
+        } else {
+            outerSignal.addEventListener("abort", abortFromOuterSignal, {
+                once: true,
+            });
+        }
+    }
+
+    try {
+        const response = await axios.get(source.url, {
+            signal: sourceController.signal,
+            timeout: source.timeout,
+        });
+
+        // 確認回來的是停車資料陣列，不接受錯誤物件或異常格式
+        if (!Array.isArray(response.data)) {
+            throw new Error(`${source.name} 回傳資料格式不正確`);
+        }
+
+        return response.data;
+    } catch (error) {
+        if (isSourceTimeout) {
+            throw new Error(`${source.name} 超過 ${source.timeout}ms 未回應`);
+        }
+
+        if (error.response) {
+            throw new Error(
+                `${source.name} 回傳 HTTP ${error.response.status}`,
+            );
+        }
+
+        throw error;
+    } finally {
+        clearTimeout(sourceTimeoutId);
+
+        if (outerSignal) {
+            outerSignal.removeEventListener("abort", abortFromOuterSignal);
+        }
     }
 }
 
