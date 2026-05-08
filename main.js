@@ -54,7 +54,7 @@ refreshBtn.addEventListener("click", async () => {
 
     // 設定 10 秒超時機制 [cite: 58]
     const controller = new AbortController();
-    const timeoutId = setTimeout(() => controller.abort(), 20000);
+    const timeoutId = setTimeout(() => controller.abort(), 30000);
 
     try {
         // 3. 執行資料抓取 (假設 fetchData 會回傳成功與否)
@@ -121,7 +121,7 @@ async function fetchData(signal) {
         {
             name: "Cloudflare Worker",
             url: apiUrl,
-            timeout: 9000,
+            timeout: 12000,
             nickname: "cw",
         },
         {
@@ -138,7 +138,7 @@ async function fetchData(signal) {
     if (!signal) {
         controller = new AbortController();
         signal = controller.signal;
-        timeoutId = setTimeout(() => controller.abort(), 25000);
+        timeoutId = setTimeout(() => controller.abort(), 30000);
     }
 
     try {
@@ -243,7 +243,7 @@ async function requestApiSource(source, outerSignal) {
         return response.data;
     } catch (error) {
         if (isSourceTimeout) {
-            throw new Error(`${source.name} 超過 ${source.timeout}ms 未回應`);
+            throw new Error(`${source.name} timeout ${source.timeout}ms`);
         }
 
         if (error.response) {
@@ -302,13 +302,13 @@ function renderInfo(shouldFly = true) {
 
         // 2. 處理剩餘車位文字：判斷是否為 -1
         if (available === -1 || available === "-1") {
-            availableSlotsElement.innerText = "未提供";
+            availableSlotsElement.innerText = "沒給";
             // 成功套用你要求的文字黃底結果
             availableSlotsElement.classList.remove("text-3xl");
             container.classList.add(
                 "text-yellow-900",
                 "bg-yellow-300",
-                "text-xl",
+                "text-3xl",
             );
         } else {
             availableSlotsElement.innerText = available;
